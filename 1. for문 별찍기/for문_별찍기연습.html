@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>과제 - fon문 : 별찍기</title>
+</head>
+
+<body>
+
+  <script>
+    //  = 이거는 완전히 대입이구
+    // += 이게 원래 있는거에 더해주는 식
+
+    //for ((1)초기화식; (2)조건식; (4)증감식;){
+    //(3)실행 문장;
+    //};
+
+
+    // 1. 역삼각형 출력하기 ----------------------------------------------------------
+    // ****
+    // ***
+    // **
+    // *
+
+    var star1 = '';
+
+    for (var i = 4; i >= 1; i--) { //i가 (4)고 / i가 1보다 크거나 같으면 실행  
+
+      for (var j = 1; j <= i; j++) { // j가 (1) / j가 i 보다 작거나 같으면 / j에 증가한다.
+        star1 += "*"; // j가 하나 증가할때마다 star1 변수에 *를 더한다.
+      }
+
+      star1 += "\n"; // j의 조건이 끝나면 줄바꿈을 해준다.
+    }
+    console.log(star1);
+
+
+
+    // 2. 삼각형 출력하기 ----------------------------------------------------------
+    // *
+    // **
+    // ***
+    // ****
+    var star2 = '';
+    var num2 = "";
+    for (var i = 0; i < 4; i++) { //i가 하나씩 증가되면 총 5번 반복한다.
+      star2 += "*"; //i가 하나 증가할때마다 star 변수에 *을 더한다.
+      num2 += star2 + '\n'; // *이 추가된 star 변수를 가져와서 줄바꿈을 한 후 num 변수에 담는다.  
+    }
+    console.log(num2); //num을 출력한다.
+
+
+
+    // 3. 피라미드 출력하기 ----------------------------------------------------------
+    //    * 1
+    //   *** 3
+    //  ***** 5     
+    // * ***** 7  
+
+    // https://hjp-recipe.tistory.com/7
+    // https://kmhan.tistory.com/21
+
+    // var star3 = '';
+
+    // for (var i = 1; i <= 4; i++) {
+    //   for (var k = 4; k >= i; k--) { // 큰틀 / 4번 반복
+    //     star3 += " ";
+    //   }
+    //   for (var j = 1; j <= i; j++) {
+    //     star3 += "* ";
+    //   }
+    //   star3 += "\n";
+    // }
+    // console.log(star3);
+
+    var star3 = '';
+
+    for (var i = 1; i <= 4; i++) { // 4번의 라인 출력
+
+      //공백
+      for (var j = i; j < 4; j++) { // j는 i니까 j가 4보다 작으면 i의 -1 만큼 공백 출력
+        star3 += " ";
+      }
+
+      // * 칸
+      for (var k = 1; k <= (2 * i) - 1; k++) { // k는 1이고, k는 (i갯수*2) - 1만큼 별 출력
+        star3 += "*";
+      }
+      star3 += "\n";
+    }
+    console.log(star3);
+
+
+    for (var i = 0; i < 5; i++) {
+      console.log(i)
+    }
+  </script>
+
+</body>
+
+</html>
