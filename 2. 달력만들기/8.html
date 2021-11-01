@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>과제 - 달력만들기 7단계</title>
+</head>
+<style>
+  .calendar-tit {
+    display: flex;
+    align-items: center;
+  }
+
+  .calendar-tit h2 {
+    margin: 0 20px;
+  }
+
+  .calendar-body {
+    width: 235px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    border: 1px solid black;
+  }
+
+  .calendar-body li {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: table-cell;
+    border: 1px solid red;
+  }
+
+  .today {
+    background-color: #FFA07A;
+  }
+</style>
+
+<body>
+
+  <div id="calendar">
+    <header class="calendar-tit">
+      <button type="button" class="perv-month">
+        이전 </button>
+      <h2 class="month"></h2>
+      <button type="button" class="next-month"> 다음 </button>
+    </header>
+    <ul class="calendar-body">
+    </ul>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script>
+    //  =이거는 완전히 대입이구
+    // +=이게 원래 있는거에 더해주는 식
+
+    // date객체.getFullYear()             년도를 4자리로 얻어낸다.
+    // date객체.getMonth()                월을 얻어낸다. (0~11)
+    // date객체.getDate()                 일을 얻어낸다.
+    // date객체.getHours()                시각을 얻어낸다.
+    // date객체.getMinites()              분을 얻어낸다.
+    // date객체.getSeconds()              초를 얻어낸다.
+    // date객체.getDay()                  요일을 얻어낸다. (일요일=0, 토요일=6)
+    // date객체.getTime()                 타임스탬프를 얻어낸다.
+    //                                      타임스탬프란, 1970년 1월 1일 자정을 기준으로 해당 순간까지 경과한 총 밀리세컨드.
+
+
+
+    // 문제 
+    // 8) 오늘 날짜 구하기
+
+    // --------------------------------------------------------------------------------------
+
+    $(document).ready(function () {
+      calendar();
+      pervMonth();
+      nextMonth();
+    });
+
+    var date = new Date();
+
+    function pervMonth() {
+      $('.perv-month').click(function () {
+        date = new Date(date.getFullYear(), date.getMonth() - 1, date.getDate()); //이전
+        $(".calendar-body li").remove();
+        calendar();
+      });
+    }
+
+    function nextMonth() {
+      $('.next-month').click(function () {
+        date = new Date(date.getFullYear(), date.getMonth() + 1, date.getDate()); //다음
+        $(".calendar-body li").remove();
+        calendar();
+      });
+    }
+
+
+    function calendar() {
+      var arr = '';
+      var toYear = date.getFullYear();
+      var toMonth = date.getMonth();
+      // var toMonth = 11;
+
+      //이달 구하기
+      var firstDay = new Date(toYear, toMonth, 1).getDay(); //이 달 1일 요일 구하기
+      var lastDate = new Date(toYear, toMonth + 1, 0).getDate(); // 이 달의 마지막 날짜 구하기
+      var lastDay = new Date(toYear, toMonth, lastDate).getDay(); // 이 달의 마지막 요일 구하기
+
+      console.log("1일 요일", firstDay);
+      console.log("이달 마지막 날짜", lastDate);
+      console.log("마지막 요일", lastDay);
+
+      // 해당 월 -----------------------------------------------------------------
+      var month = toYear + "년" + (toMonth + 1) + "월";
+      $('.month').text(month);
+      console.log('해당 월', month);
+
+      // 첫번째 줄 빈칸(10월기준 5개) ---------------------------------------------
+      for (var bin = 0; bin < firstDay; bin++) {
+        arr += "[ ]";
+        $(".calendar-body").append("<li></li>");
+      }
+      console.log('빈칸', bin);
+
+      // 날짜 ----------------------------------------------------------------------
+      for (var i = 1; i <= lastDate; i++) {
+        getday = new Date(toYear, toMonth, i).getDay(); // 요일을 얻어낸다. (일요일=0, 토요일=6)
+        // 다음행 이동
+        if (getday == 0) {
+          arr += "\n";
+          // $(".calendar-body").append("<br/>");
+        }
+        $(".calendar-body").append("<li class='date'>" + i + "</li>");
+        arr += " " + i;
+      }
+
+      // 마지막 줄 빈칸 --------------------------------------------------------------
+      // 마지막요일을 구해서 7보다 작을경우 요일값 제외한 나머지 값을 구해라
+      // 마지막 요일 0 / 7-0 = 6 만큼 칸 채우기
+
+      for (var lastBin = 1; lastBin < (7 - lastDay); lastBin++) {
+        $(".calendar-body").append("<li></li>");
+        arr += "[ ]";
+      }
+      console.log('마지막칸', lastBin);
+
+      // 오늘 날짜 표시 ---------------------------------------------------------------
+      // 오늘 날짜 구하기
+      // 년도 일치, 월수 일치, 데이 일치
+      // &&(논리곱 연산자) 의 경우 둘다 true여야만 true이므로, 왼쪽 피연산자가 false면 바로 false로 평가된다. 
+
+      console.log(date.getMonth())
+      console.log(toMonth)
+
+      $(".date").each(function (index) {
+        if (toYear == date.getFullYear() && toMonth == date.getMonth() && $(".date").eq(index).text() == date.getDate()) {
+          $(".date").eq(index).addClass('today');
+        }
+      });
+
+      console.log(arr); //최종 출력
+    }
+
+  </script>
+
+</body>
+
+</html>
