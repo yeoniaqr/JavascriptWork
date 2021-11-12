@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[string] 09.replace()함수-대소문자-구분없이-치환</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 모든 문자열 치환하기 (replace, replaceAll)</h2>
+  <p>replace() 함수를 사용</p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    Javascript에는 replaceAll() 이라는 함수는 없음
+  -------------------------------------------------------------*/
+
+  let str = 'apple, Banana, orange, banana';
+  let replaced_str = str.replace(/banana/gi, 'tomato');
+
+  document.write('변경 전 : ', str, '<br/>');
+  document.write('변경 후 : ', replaced_str, '<br/>');
+
+  /*
+    대소문자 구분없이 문자열을 치환하기 위해서는
+    'i' modifier를 사용했기 때문에,
+    'i'와 'g' modifier를 위 예제와 같이 함께 적어주면 됩니다.
+  */
+
+
+</script>
+
+</html>

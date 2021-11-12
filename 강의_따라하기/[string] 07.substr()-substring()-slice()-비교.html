@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[string] 07.substr()-substring()-slice()-비교.html</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] substr(), substring(), slice() 비교</h2>
+  <p>substr(), substring(), slice() 함수는 모두 문자열을 잘라주는 역할</p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    substr() 
+
+    string.substr(start, length)
+
+    substr()함수는 파라미터로 입력받은 start index부터 length 길이만큼
+    string을 잘라내어 반환하는 함수
+
+    첫번째 글자의 inedx는 0부터 시작
+  -------------------------------------------------------------*/
+
+  let str = "안녕하세요?";
+
+  let first_char = str.substr(0, 1);
+  let second_char = str.substr(1, 1);
+  let last_char = str.substr(str.length - 1, 1);
+
+  // 첫번째 글자 하나를 가져오기 위해서 start=0, length=1을 파라미터로 전달
+
+  document.write("첫번째 문자 : ", first_char, '<br/>');
+  document.write("두번째 문자 : ", second_char, '<br/>');
+  document.write("마지막 문자 : ", last_char, '<br/><br/>');
+
+
+
+  /* ------------------------------------------------------------
+    substring()
+
+    string.substring(start, end)
+
+    substring()함수는 substr() 함수와 같이 특정 문자열을 잘라내여 반환
+    substr() 함수와 다른 점은 매개변수로 잘라내고 싶은 문자열의 start index와 last index를 전달
+
+    substr() 함수와 마찬가지로 index는 0부터 시작
+  -------------------------------------------------------------*/
+
+  let first_char2 = str.substring(0, 1);
+  let second_char2 = str.substring(1, 2);
+  let last_char2 = str.substring(str.length - 1, str.length);
+
+  // 첫번째 글자 하나를 가져오기 위해 start=0, end=1의 값을 파라미터로 전달
+
+  document.write("첫번째 문자 : ", first_char2, '<br/>');
+  document.write("두번째 문자 : ", second_char2, '<br/>');
+  document.write("마지막 문자 : ", last_char2, '<br/><br/>');
+
+
+  /* ------------------------------------------------------------
+  slice()
+
+  substring() 함수와 마찬가지로 파라미터로 자를 문자열의 start index와 end index를 전달
+-------------------------------------------------------------*/
+
+  let first_char3 = str.slice(0, 2); // 안녕
+  let second_char3 = str.slice(1, 2); // 녕
+  let last_char3 = str.slice(str.length - 1, str.length);
+
+  document.write("첫번째 문자 : ", first_char3, '<br/>');
+  document.write("두번째 문자 : ", second_char3, '<br/>');
+  document.write("마지막 문자 : ", last_char3, '<br/><br/>');
+
+
+  /* ------------------------------------------------------------
+    substring() vs slice()
+    두 함수의 차이점
+
+    파라미터로 전달되는 start > end 일 경우 두 함수의 처리가 다르다.
+  
+    start > end 인 경우,
+
+    substring() : 
+    start 값과 end 값을 바꾸어서 처리함
+    위 예제에서 substring(1, 0)은 실제로는 substring(0, 1)로 처리되어 string의 첫번째 글자 하나를 리턴
+  
+    slice() :
+    그냥 비어있는 string, 즉 ""을 리턴
+    -------------------------------------------------------------*/
+
+  // start > end 일 경우 처리
+  let slice = str.slice(1, 0);
+  let substring = str.substring(1, 0);
+
+
+  document.write("slice(1,0) : ", slice, '<br/>'); // 
+  document.write("substring(1,0) : ", substring, '<br/>'); // 안
+
+
+  //start 또는 end 값이 음수인 경우
+  let slice_1 = str.slice(-2, 6);
+  let substring_1 = str.substring(-2, 6);
+  let slice_2 = str.slice(0, -2);
+  let substring_2 = str.substring(0, -2);
+
+
+  document.write("slice(-2, 6) : ", slice_1, '<br/>');
+  document.write("substring(-2, 6) : ", substring_1, '<br/>');
+  document.write("slice(0, -2) : ", slice_2, '<br/>');
+  document.write("substring(0, -2) : ", substring_2, '<br/><br/>');
+
+
+  // slice() : start 또는 end값이 음수이고, 음수의 절대값이 전체 string 길이보다 클때
+  let slice_3 = str.slice(-10, 6);
+  let slice_4 = str.slice(0, -10);
+
+  document.write("slice(-10, 6) : ", slice_3, '<br/>');
+  document.write("slice(0, -10) : ", slice_4, '<br/>');
+</script>
+
+</html>

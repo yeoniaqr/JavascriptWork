@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[string] 08.문자열에서-특정-문자열-치환</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 문자열에서 특정 문자열 치환하기 (replace)</h2>
+  <p>replace() 함수를 사용</p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    replace()
+
+    string.replace(searchValue, newValue)
+
+    replace() 함수는 searchValue, newValue를 파라미터로 입력받고
+    문자열에서 searchValue를 찾아서 newValue로 치환한다.
+  -------------------------------------------------------------*/
+
+  let str = 'apple, banana, orange';
+  let replaced_Str = str.replace('banana', 'tomato');
+
+  document.write('변경 전 : ', str, '<br>');
+  document.write('변경 후 : ', replaced_Str, '<br><br/>');
+
+
+  /* ------------------------------------------------------------
+    replace() 함수는 첫 번째로 찾은 문자열만 치환
+  -------------------------------------------------------------*/
+
+  let str2 = 'apple, banana, orange, banana';
+  let replaced_str2 = str2.replace('banana', 'tomato');
+
+  document.write('변경 전 : ', str2, '<br/>');
+  document.write('변경 후 : ', replaced_str2, '<br/><br/>');
+
+
+  /* ------------------------------------------------------------
+    replace() 함수는 대소문자를 구분
+  -------------------------------------------------------------*/
+
+  let str3 = 'apple, Banana, orange';
+  let replaced_str3 = str3.replace('banana', 'tomato');
+
+  document.write('변경 전 : ', str3, '<br/>');
+  document.write('변경 후 : ', replaced_str3, '<br/><br/>');
+</script>
+
+</html>

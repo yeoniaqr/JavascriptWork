@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[string] 09.replace()함수-대소문자-구분없이-치환</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] replace() 함수 사용하여 대소문자 구분 없이 치환하기</h2>
+  <p>replace() 함수를 사용</p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    대소문자 구분없이 문자열을 치환하는 방법
+
+    대소문자의 구분없이 문자열을 치환하기 위해서 정규식(regular expression)을 사용
+    정규식으로 찾으려는 문자열은 '/'로 감싸서, 파라미터로 들어가는 값이 정규식임을 알려줌
+
+    그리고, '/' 뒤에는 'i'라는 modifier를 붙여줌
+    여기서 i는 대소문자를 구분하지 말라는 의미
+
+    'ignore case'라고 외우면 좀 더 기억하기 쉬울 것이다.
+  -------------------------------------------------------------*/
+
+  let str = 'apple, Banana, orange';
+  let replaced_str = str.replace(/banana/i, 'tomato');
+
+  document.write('변경 전 : ', str, '<br/>');
+  document.write('변경 후 : ', replaced_str, '<br/>');
+
+
+</script>
+
+</html>

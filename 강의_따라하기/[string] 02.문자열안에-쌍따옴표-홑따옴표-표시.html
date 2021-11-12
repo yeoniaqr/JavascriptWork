@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[string] 02.문자열안에-쌍따옴표-홑따옴표-표시</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 문자열 안에 쌍따옴표, 홑따옴표 표시하는 3가지 방법</h2>
+
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    문자열에 표시하려는 따옴표와 다른 따옴표로 문자열 표현하기
+  -------------------------------------------------------------*/
+
+  let str1 = "'홍길동님' 안녕하세요?";
+  let str2 = '"홍길동님" 안녕하세요?';
+
+  document.write(str1);
+  document.write('<br>');
+  document.write(str2);
+  document.write('<br>');
+  document.write('<br>');
+
+
+  /* ------------------------------------------------------------
+    escape 문자 사용하기
+    escape문자는 문자열에서 특수문자를 표현하기 위한 특별한 방법이다.
+    문자열에서 따옴표를 표현하기 위해서, 따옴표 앞에 '\' 문자를 붙여준다.
+  -------------------------------------------------------------*/
+  let str3 = "\"홍길동님\" 안녕하세요?";
+  let str4 = '\'홍길동\'안녕하세요?';
+
+  document.write(str3);
+  document.write('<br>');
+  document.write(str4);
+  document.write('<br>');
+  document.write('<br>');
+
+
+  /* ------------------------------------------------------------
+    템플릿 문자열(Template String) 사용하기 (feat ES6)
+      템플릿 문자열은 ES6 문법
+      기본적으로 상수를 제외한 나머지 문자열을 입력한 그대로 반환
+      템플릿 문자열은 'back-tick(`)'으로 감싸서 생성
+  -------------------------------------------------------------*/
+  let str5 = `"홍길동"님 안녕하세요?`;
+  let str6 = `'홍길동님' 안녕하세요?`;
+  let str7 = `'홍길동'님 안녕하세요?`;
+
+  document.write(str5);
+  document.write('<br>');
+  document.write(str6);
+  document.write('<br>');
+  document.write(str7);
+  document.write('<br>');
+
+</script>
+
+</html>

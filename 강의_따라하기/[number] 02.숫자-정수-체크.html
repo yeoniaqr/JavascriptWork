@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[number] 02.숫자-정수-체크</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 숫자가 정수인지, 실수인지 체크하는 2가지 방법</h2>
+
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    1.Number.isInteger() 함수
+    파라미터로 입력받은 값이 정수인지 판단
+    가장 간단하게, 데이터가 정수인지 판단 할 수 있는 방법임
+    하지만, 이 함수는 익스플로러에서는 작동 안함 
+  -------------------------------------------------------------*/
+
+  document.writeln('---- Number.isInteger() 함수---- <br>');
+  document.writeln(Number.isInteger(10)); // true
+  document.writeln(Number.isInteger(0)); // true
+  document.writeln(Number.isInteger(-10)); // true
+  document.writeln(Number.isInteger(123.1) + '<br><br>'); //false
+
+  /* ------------------------------------------------------------
+    2.나머지 연산자 (%) 활용
+  -------------------------------------------------------------*/
+  function isInteger(number) {
+    return number % 1 === 0;
+  }
+  document.writeln('---- 나머지 연산자 (%) 활용---- <br>');
+  document.writeln(isInteger(10)); // true
+  document.writeln(isInteger(0)); // true
+  document.writeln(isInteger(-10)); // true
+  document.writeln(isInteger(123.1)); // false
+</script>
+
+</html>

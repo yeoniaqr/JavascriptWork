@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[string] 14.문자열-합치기</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 문자열 합치기 (3가지 방법)</h2>
+  <p>
+    1. '+' 연산자 <br />
+    2. concat() 함수<br />
+    3. join() 함수
+  </p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    1. '+' 연산자 
+  -------------------------------------------------------------*/
+  const str = 'Hello' + ' ' + 'world';
+  document.writeln(str); // Hello world
+
+
+  let str2 = 'Hello';
+  str2 += ' ';
+  str2 += 'world';
+
+  document.writeln(str2); // Hello world
+
+
+  /* ------------------------------------------------------------
+    2. concat() 함수
+
+    str.concat(str2, str3.....strN)
+
+    concat()함수는 str과 파라미터로 입력받은 str2, str3... 문자열을 모두 이어붙인 문자열을 리턴합니다.
+    str2는 필수 입력값이고, 나머지는 선택 입력값
+  -------------------------------------------------------------*/
+  const result = 'Hello'.concat(' ', 'world', '!');
+
+  document.write(result); // Hello world!
+
+
+  /* ------------------------------------------------------------
+    파라미터로 문자열 이외의 다른 타입도 넣을 수 있습니다.
+  -------------------------------------------------------------*/
+  const str3 = ''.concat(null); // null
+  const str4 = ''.concat(1, 2); // 12
+  const str5 = ''.concat(true, false); // truefalse
+  const str6 = ''.concat({ name: 'apple' }); // [object Object]
+  const str7 = ''.concat([1, 2]); // 1,2
+
+  document.writeln(str3);
+  document.writeln(str4);
+  document.writeln(str5);
+  document.writeln(str6);
+  document.writeln(str7);
+
+
+  /* ------------------------------------------------------------
+    Array의 concat() 함수가 적용되지 않도록 주의하세요.
+  -------------------------------------------------------------*/
+  const arr = ['Hello'];
+  const str8 = 'Hello';
+
+  // 배열 합치기
+  const str9 = arr.concat(' ', 'world'); // Hello, , world
+  // 문자열 합치기
+  const str10 = str8.concat(' ', 'world'); // Hello world
+
+  document.write(str9);
+  document.write('<br>');
+  document.write(str10);
+
+
+  /* ------------------------------------------------------------
+    3. join() 함수
+
+    arr.join([separator])
+    
+  -------------------------------------------------------------*/
+
+  const str11 = ['Hello', 'world'].join();
+  const str12 = ['Hello', 'world'].join('♥');
+
+  document.write(str11);
+  document.write('<br>');
+  document.write(str12);
+
+</script>
+
+</html>

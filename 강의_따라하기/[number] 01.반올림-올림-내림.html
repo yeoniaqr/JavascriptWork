@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[number] 01. 반올림-올림-내림</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 반올림(round), 올림(ceil), 내림(floor) - 소수점, 음수,자리수 지정</h2>
+
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    올림(Math.ceil())
+    javascript 에서 숫자를 올림 처리 할때 = Math.ceil() 함수 사용
+    입력 받은 숫자보다 크거나 같은 정수 중 가장 작은 정수를 리턴
+  -------------------------------------------------------------*/
+
+  // 1. 올림
+  const ceil_1 = Math.ceil(1); // 1
+  const ceil_2 = Math.ceil(1.222); // 2
+  const ceil_3 = Math.ceil(1.5); // 2
+  const ceil_4 = Math.ceil(1.777); // 2
+
+  // 2. null 또는 0 인 경우
+  const ceil_5 = Math.ceil(null); // 0
+  const ceil_6 = Math.ceil(0); // 0
+
+  // 3. 음수인 경우
+  const ceil_7 = Math.ceil(-1); // -1
+  const ceil_8 = Math.ceil(-1.111); // -1
+  const ceil_9 = Math.ceil(-1.5); // -1
+  const ceil_10 = Math.ceil(-1.777);// -1
+
+  //결과 출력
+  document.writeln('---- 정수로 올림하기---- <br>');
+  document.writeln('ceil(1) : ' + ceil_1 + '<br>');
+  document.writeln('ceil(1.222) : ' + ceil_2 + '<br>');
+  document.writeln('ceil(1.5) : ' + ceil_3 + '<br>');
+  document.writeln('ceil(1.777) : ' + ceil_4 + '<br><br>');
+
+  document.writeln('---- null 또는 0 인 경우---- <br>');
+  document.writeln('ceil(null) : ' + ceil_5 + '<br>');
+  document.writeln('ceil(0) : ' + ceil_6 + '<br><br>');
+
+  document.writeln('---- 음수인 경우---- <br>');
+  document.writeln('ceil(-1) : ' + ceil_7 + '<br>');
+  document.writeln('ceil(-1.111) : ' + ceil_8 + '<br>');
+  document.writeln('ceil(-1.5) : ' + ceil_9 + '<br>');
+  document.writeln('ceil(-1.777) : ' + ceil_10 + '<br><br>');
+
+
+
+  /* ------------------------------------------------------------
+    자릿수 지정 (소수점 이하, 10단위, 100단위)
+    Math.ceil() 함수를 이용해서 소수점 아래에서 값을 올림 하고 싶을때
+      처리하려는 숫자의 부동소수점을 올림하고 싶은 숫자 앞까지 옮겨준 후 (10,100,1000... 숫자를 곱하여)
+      Matil.ceil()함수를 적용하고 다시 소수점의 위치를 원복시킨다. (10,100,1000... 숫자를 나누어서)
+
+    반대로 10단위, 100단위에서 올림을 처리하고 싶은 경우는
+      마찬가지로 숫자의 부동소수점을 올림하고 싶은 숫자 앞까지 옮겨준 후
+      (올림하고 싶은 숫자가 10,100의 단위이므로 해당 숫자을 나누어줌)
+      Math.ceil() 함수를 적용하고 다시 소수점의 위치를 원복한다. 10,100..숫자로 다시 곱해준다
+  -------------------------------------------------------------*/
+
+  // 1. 소수점 이하
+  const ceil_11 = Math.ceil(1.222 * 10) / 10; // 1.3
+  const ceil_12 = Math.ceil(1.222 * 100) / 100; // 1.23
+
+  // 2. 10단위, 100단위
+  const ceil_13 = Math.ceil(1222 / 10) * 10; // 1230
+  const ceil_14 = Math.ceil(1222 / 100) * 100; // 1300
+
+  //결과 출력
+  document.writeln('---- 소수점 이하 ---- <br>');
+  document.writeln('ceil(1.222 * 10) / 10 : ' + ceil_11 + '<br>');
+  document.writeln('ceil(1.222 * 100) / 100 : ' + ceil_12 + '<br>');
+  document.writeln('ceil(1222 / 10) * 10 : ' + ceil_13 + '<br>');
+  document.writeln('ceil(1222 / 100) * 100 : ' + ceil_14 + '<br><br>');
+
+
+  /* ------------------------------------------------------------
+    내림 (Math.floor())
+    입력받은 숫자보다 작거나 같은 정수 중 가장 큰 정수를 리턴
+    즉, 입력받은 숫자를 내림한 정수를 리턴하는 함수
+  -------------------------------------------------------------*/
+
+  // 1. 내림
+  const floor_1 = Math.floor(1); // 1
+  const floor_2 = Math.floor(1.222); // 1
+  const floor_3 = Math.floor(1.5); // 1
+  const floor_4 = Math.floor(1.777); // 1
+
+  // 2. null 또는 0인 경우
+  const floor_5 = Math.floor(null); // 0
+  const floor_6 = Math.floor(0); // 0
+
+  // 3. 음수인 경우
+  const floor_7 = Math.floor(-1); // -1
+  const floor_8 = Math.floor(-1.111); // -2
+  const floor_9 = Math.floor(-1.5); // -2
+  const floor_10 = Math.floor(-1.777); // -2
+
+  // 결과 출력
+  document.writeln('---- 정수로 내림하기 ---- <br>');
+  document.writeln('floor(1) : ' + floor_1 + '<br>');
+  document.writeln('floor(1.222) : ' + floor_2 + '<br>');
+  document.writeln('floor(1.5) : ' + floor_3 + '<br>');
+  document.writeln('floor(1.777) : ' + floor_4 + '<br><br>');
+
+
+  document.writeln('---- null 또는 0인 경우 ---- <br>');
+  document.writeln('floor(null) : ' + floor_5 + '<br>');
+  document.writeln('floor(0) : ' + floor_6 + '<br><br>');
+
+  document.writeln('---- 음수인 경우 ---- <br>');
+  document.writeln('floor(-1) : ' + floor_7 + '<br>');
+  document.writeln('floor(-1.111) : ' + floor_8 + '<br>');
+  document.writeln('floor(-1.5) : ' + floor_9 + '<br>');
+  document.writeln('floor(-1.777) : ' + floor_10 + '<br><br>');
+
+  /* ------------------------------------------------------------
+    자리수 지정 (소수점 이하, 10단위, 100단위)
+  -------------------------------------------------------------*/
+  // 1. 소수점 이하 
+  const floor_11 = Math.floor(1.77 * 10) / 10; // 1.7
+  const floor_12 = Math.floor(1.777 * 100) / 100; // 1.77
+
+  // 2. 10단위, 100단위
+  const floor_13 = Math.floor(1777 / 10) * 10; // 1770
+  const floor_14 = Math.floor(1777 / 100) * 100; // 1700
+
+  //결과 출력
+  document.writeln('---- 1. 소수점 이하  ---- <br>');
+  document.writeln('floor(1.77 * 10) : ', floor_11 + '<br>');
+  document.writeln('floor(1.777 * 100) : ', floor_12 + '<br><br>');
+  document.writeln('---- 2. 10단위, 100단위  ---- <br>');
+  document.writeln('floor(1777 / 10) : ', floor_13 + '<br>');
+  document.writeln('floor(1777 / 100) : ', floor_14 + '<br>');
+
+  /* ------------------------------------------------------------
+    3. 반올림 (Math.round())
+      파라미터로 입력 받은 숫자의
+      소수점 이하의 값이 0.5보다 크면, 입력받은 수보다 다음으로 높은 절대값을 가지는 정수를 리턴
+      소수점 이하의 값이 0.5보다 작으면, 입력받은 수보다 절대값이 더 낮은 정수를 리턴
+      소수점 이하의 값이 0.5와 같으면, 입력받은 수보다 큰 다음 정수를 리턴
+  -------------------------------------------------------------*/
+
+  // 1. 반올림
+  const round_1 = Math.round(1); // 1
+  const round_2 = Math.round(1.222); // 1
+  const round_3 = Math.round(1.5); // 2
+  const round_4 = Math.round(1.777); // 2
+
+  const round_5 = Math.round(null); // 0
+  const round_6 = Math.round(0); // 0
+
+  const round_7 = Math.round(-1); // -1 
+  const round_8 = Math.round(-1.111); // -1
+  const round_9 = Math.round(-1.5); // -1
+  const round_10 = Math.round(-1.777); // -2
+
+  // 결과 출력
+  document.writeln('--- 정수로 반올림하기 --- <br>')
+  document.writeln('round(1) : ' + round_1 + '<br>');
+  document.writeln('round(1.222) : ' + round_2 + '<br>');
+  document.writeln('round(1.5) : ' + round_3 + '<br>');
+  document.writeln('round(1.777) : ' + round_4 + '<br><br>');
+  document.writeln('--- null 또는 0 인 경우 --- <br>')
+  document.writeln('round(null) : ' + round_5 + '<br>');
+  document.writeln('round(0) : ' + round_6 + '<br><br>');
+  document.writeln('--- 음수인 경우 --- <br>')
+  document.writeln('round(-1) : ' + round_7 + '<br>');
+  document.writeln('round(-1.111) : ' + round_8 + '<br>');
+  document.writeln('round(-1.5) : ' + round_9 + '<br>');
+  document.writeln('round(-1.777) : ' + round_10 + '<br>');
+
+  /* ------------------------------------------------------------
+    자리수 지정 (소수점 이하, 10단위, 100단위)
+  -------------------------------------------------------------*/
+  // 1. 소수점 이하
+  const round_11 = Math.round(1.222 * 10) / 10;
+  const round_12 = Math.round(1.5 * 10) / 10; // 1.5
+  const round_13 = Math.round(1.777 * 10) / 10; // 1.8
+  // 2. 10단위
+  const round_14 = Math.round(1001 / 10) * 10; // 1000
+  const round_15 = Math.round(1005 / 10) * 10; // 1010
+  const round_16 = Math.round(1007 / 10) * 10; // 1010
+
+
+  // 결과 출력
+  document.writeln('--- 1. 소수점이하 --- <br>')
+  document.writeln('round(1.222 * 10) / 10 : ' + round_11 + '<br>');
+  document.writeln('round(1.5 * 10) / 10 : ' + round_12 + '<br>');
+  document.writeln('round(1.777 * 10) / 10: ' + round_13 + '<br><br>');
+  document.writeln('--- 2. 10단위 --- <br>')
+  document.writeln('round(1001 / 10) * 10 : ' + round_14 + '<br>');
+  document.writeln('round(1005 / 10) * 10 : ' + round_15 + '<br>');
+  document.writeln('round(1007 / 10) * 10 : ' + round_16 + '<br>');
+
+
+  /* ------------------------------------------------------------
+    소수점 숫자 정밀도 문제
+  -------------------------------------------------------------*/
+  // 부동소수점 오차 확인 (1.005 반올림)
+  const n1 = 1.005 * 100; // 100.49999999999999
+  const round_17 = Math.round(1.005 * 100) / 100;
+
+  // 부동소수점 오차 보정 (1.005 반올림)
+  const n2 = (1.005 + Number.EPSILON) * 100; // 100.50000000000001
+  const round_18 = Math.round((1.005 + Number.EPSILON) * 100) / 100;
+
+
+  // 결과 출력
+  document.writeln('--- 부동 소수점 오차 확인 --- <br>')
+  document.writeln('n1 : ' + n1 + '<br>');
+  document.writeln('round_17 : ' + round_17 + '<br><br>');
+  document.writeln('--- 부동 소수점 오차 보정 --- <br>')
+  document.writeln('n2 : ' + n2 + '<br>');
+  document.writeln('round_18 : ' + round_18 + '<br>');
+
+  /* ------------------------------------------------------------
+  4. 소수점 반올림 (toFixed(), toPrecision())
+
+    numObj.toFixed([digits])
+
+    toFixed() 함수는, 부동소수점(Floating Point) 숫자를 고정소수점 (Fixed Point) 숫자로 바꾸어서 리턴
+    이때, 파라미터로 숫자 (digits)를 전달하면, 'digits'만큼의 소수점 이하 자리수를 가지는 문자열로 리턴
+    원본 숫자 (numobj)의 소수점 이하 길이가 'disgits'보다 길면 숫자를 반올림 하고
+    짧으면 뒤를 0으로 채워서 리턴한다.
+-------------------------------------------------------------*/
+  // 1.소수점이하
+  const fixed_1 = 1.222.toFixed(1); // 1.2
+  const fixed_2 = 1.5.toFixed(1); // 1.5
+  const fixed_3 = 1.777.toFixed(1); // 1.8
+
+  // 2.음수
+  const fixed_4 = (-1.222).toFixed(1); // -1.2
+  const fixed_5 = (-1.5).toFixed(1); // -1.5
+  const fixed_6 = (-1.777).toFixed(1); // -1.8
+
+  // 결과 출력
+  document.writeln('--- 1. 소수점이하 --- <br>')
+  document.writeln('fixed_1 : ' + fixed_1 + '<br>');
+  document.writeln('fixed_2 : ' + fixed_2 + '<br>');
+  document.writeln('fixed_3: ' + fixed_3 + '<br><br>');
+  document.writeln('--- 2. 음수 --- <br>')
+  document.writeln('fixed_4 : ' + fixed_4 + '<br>');
+  document.writeln('fixed_5 : ' + fixed_5 + '<br>');
+  document.writeln('fixed_6 : ' + fixed_6 + '<br>');
+
+
+  /* ------------------------------------------------------------
+    toPrecision() 함수
+
+    numObj.toPrecision([precision])
+
+    toPrecision()함수는 숫자(numobj)를 파라미터로 전달된
+    유효 자릿수(precision) 길이의 문자열로 만들어서 리턴
+    만약, 유효 자릿수(precision)이 원본 숫자의 자릿수보다 작으면 반올림한 값을 리턴
+  -------------------------------------------------------------*/
+
+  // 1.소수점이하
+  const precision_1 = 1.222.toPrecision(2); // 1.2
+  const precision_2 = 1.5.toPrecision(2); // 1.5
+  const precision_3 = 1.777.toPrecision(2); // 1.8
+
+  // 2.음수
+  const precision_4 = (-1.222).toPrecision(2); // -1.2
+  const precision_5 = (-1.5).toPrecision(2); // -1.5
+  const precision_6 = (-1.777).toPrecision(2); // -1.8
+
+  // 결과 출력
+  document.writeln('--- 1. 소수점이하 --- <br>')
+  document.writeln('precision_1 : ' + precision_1 + '<br>');
+  document.writeln('precision_2 : ' + precision_2 + '<br>');
+  document.writeln('precision_3: ' + precision_3 + '<br><br>');
+  document.writeln('--- 2. 음수 --- <br>')
+  document.writeln('precision_4 : ' + precision_4 + '<br>');
+  document.writeln('precision_5 : ' + precision_5 + '<br>');
+  document.writeln('precision_6 : ' + precision_6 + '<br>');
+
+</script>
+
+</html>
