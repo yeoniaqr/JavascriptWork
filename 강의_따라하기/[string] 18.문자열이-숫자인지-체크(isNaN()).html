@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[string] 18.문자열이-숫자인지-체크(isNaN())</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 문자열이 숫자인지 체크하기, isNaN() 함수</h2>
+  <p> isNaN()</p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    문자열이 숫자인지 체크
+    isNaN(value)
+      NaN은 'Not a Number'의 약자
+      파라미터가  숫자가 아닐 경우 true,
+                  숫자 일 경우 false
+  -------------------------------------------------------------*/
+  document.writeln(isNaN("123")); // false
+  document.writeln(isNaN("123.1")); // false
+  document.writeln(isNaN(123)); // false
+  document.writeln(isNaN(-123)); // false
+  document.writeln(isNaN(.1)); // false
+  // 문자열 타입이든 숫자 타입이든 숫자가 입력되면 isNaN() 함수는 리턴
+
+  document.writeln(isNaN("abc")); // true
+  // 문자열이 입력되면 true 리턴
+
+  document.writeln(isNaN("123+123")); // true
+  // + 기호가 있기때문에 true
+
+  document.writeln(isNaN(undefined)); // true
+  document.writeln(isNaN({})); // true
+
+  document.writeln(isNaN('')); // false
+  document.writeln(isNaN(' ')); // false
+  document.writeln(isNaN(null)); // false
+  document.writeln(isNaN(true)); // false
+  document.writeln(isNaN([])); // false
+  // 빈 문자열, null, boolean 값, 배열은 false
+
+  document.writeln(isNaN(new Date())); // false
+  document.writeln(isNaN(new Date().toString())); // true
+  // new Date().toString()는 문자를 리턴하므로 true
+
+</script>
+
+</html>

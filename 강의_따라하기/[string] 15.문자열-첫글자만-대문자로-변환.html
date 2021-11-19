@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[string] 15.문자열-첫글자만-대문자로-변환.html</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 문자열의 첫글자만 대문자로 변환하기</h2>
+  <p>
+    문자열의 첫글자만 대문자로 변환하기 위해서는 다음의 4가지 절차가 필요함<br />
+    1. 첫번째 글자 찾기<br />
+    2. 첫번째 글자를 대문자로 변환하기<br />
+    3. 첫번째 글자를 제외한 나머지 글자 찾기<br />
+    4. 2에서 대문자로 변환한 첫번째 글자와 3에서 찾은 나머지 글자를 이어 붙이기
+  </p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    4가지 절차 실행
+  -------------------------------------------------------------*/
+  const str = 'apple';
+
+  //1. 첫번째 글자 찾기
+  const firstChar = str[0]; // 'a'
+  // const firstChar = str.charAt(0) // 'a'
+
+
+  //2. 첫번째 글자를 대문자로 변환하기
+  const firstCharUpper = firstChar.toUpperCase(); // 'A'
+
+  //3. 첫번째 글자 제외한 나머지 글자 찾기
+  const leftChar = str.slice(1, str.length); // 'pple'
+  // const leftChar = str.substring(1, str.length)
+  // const leftChar = str.substr(1, str.length-1)
+
+  //4. 2에서 대문자로 변환한 첫번째 글자와 3에서 찾은 나머지 글자 이어 붙이기
+  const result = firstCharUpper + leftChar;
+
+  document.writeln(result);
+
+
+  /* ------------------------------------------------------------
+    위 코드를 좀 더 간결하게 실행
+  -------------------------------------------------------------*/
+  const result2 = str[0].toUpperCase() + str.slice(1, str.length);
+
+  document.writeln(result2);
+</script>
+
+</html>

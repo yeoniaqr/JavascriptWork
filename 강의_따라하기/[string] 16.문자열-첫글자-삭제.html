@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[string] 16.문자열-첫글자-삭제</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 문자열의 첫글자 삭제하기</h2>
+  <p>
+    substr(), substring(), slice() 함수를 사용하여<br />
+    첫번째 글자를 삭제하는 방법을 알아보도록 하겠습니다. <br />
+  </p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    문자열의 첫글자 삭제하기
+
+    substr()
+      string.substr(start, length)
+      파라미터로 전달된 시작 index(start)부터 길이 (length)만큼 문자열을 잘라서 리턴한다.
+      length를 입력하지 않으면 시작 index부터 문자열 끝까지를 리턴한다.
+
+
+    substring()
+      string.substring(start, end)
+      파라미터로 전달된 시작 index(start)부터 종료 index(end)만큼 문자열을 잘라서 리턴한다.
+      리턴 값에 종료 index(end)위치의 문자는 포함하지 않는다.
+      종료 index(end)를 입력하지 않으면 시작 index 부터 문자열의 끝까지를 리턴한다.
+
+    slice()
+      string.slice(start, end)
+      substring()과 사용법이 거의 같다.
+      파라미터로 전달된 시작 index(start)부터 종료 index(end)만큼 문자열을 잘라서 리턴한다.
+      리턴 값에 종료 index(end)위치의 문자는 포함하지 않는다.
+      종료 index(end)를 입력하지 않으면, 시작 index부터 문자열의 끝까지를 리턴
+  -------------------------------------------------------------*/
+  const str = "abcde";
+
+  const newStr1 = str.substr(1);
+  const newStr2 = str.substring(1);
+  const newStr3 = str.slice(1);
+
+  document.writeln(newStr1);
+  document.writeln(newStr2);
+  document.writeln(newStr3);
+
+</script>
+
+</html>

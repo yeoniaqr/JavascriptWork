@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[string] 17.문자열-뒤에서-자르기</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 문자열 뒤에서 자르기</h2>
+  <p>
+    slice() 함수를 사용
+  </p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    문자열의 뒤에서 자르기
+
+    slice() 함수
+      str.slice(beginIndex[, endIndex])
+      파라미터로 문자열을 잘라낼 시작 index 값 (beginIndex) 과 마지막 index(endIndex)을 받아서
+      해당 index 값 사이의 문자열을 추출 하는 함수이다.
+      endIndex 위치의 문자는 리턴값에 포함되지 않는다.
+      index는 0부터 시작한다.
+  -------------------------------------------------------------*/
+  const str = "abcde";
+
+  const last2char_01 = str.slice(-2, str.length);
+  /*  beginIndex나 endIndex의 값으로 음수가 입력되면
+      index값은 문자열의 길이 + index 값으로 계산된다.
+      즉, 위의 예제에서 문자열의 길이가 5 / beginIndex 값은 -2 이므로
+      (5+(-2),5) > 즉, (3,5)로 계산되어 마지막 2글자를 리턴함
+  */
+  const last2char_02 = str.slice(-2);
+  /*  endIndex 파라미터가 생략되면
+      slice()함수는 문자열의 마지막 글자까지 문자열을 잘라서 리턴
+  */
+
+
+  document.writeln(last2char_01);
+  document.writeln(last2char_02);
+</script>
+
+</html>
