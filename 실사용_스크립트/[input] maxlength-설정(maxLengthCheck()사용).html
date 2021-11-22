@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[input]maxlength-설정(maxLengthCheck()사용)</title>
+</head>
+
+<style>
+  label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  input {
+    width: 600px;
+    height: 30px;
+    display: block;
+  }
+
+  textarea {
+    width: 600px;
+    height: 100px;
+    display: block;
+  }
+
+  div {
+    margin-bottom: 20px;
+  }
+</style>
+
+<body>
+  <h2>[input, textarea] 텍스트 수 제한 주기</h2>
+  <div>
+    <label for="name">input</label>
+    <input type="text" id="name" name="name" placeholder="띄어쓰기 포함 15자 이내로 입력해 주세요." maxlength="15" oninput="maxLengthCheck(this)" />
+  </div>
+
+  <div>
+    <label for="textarea">textarea</label>
+    <textarea type="text" id="textarea" name="textarea" placeholder="내용 50자 이내로 입력해 주세요." maxlength="50" oninput="maxLengthCheck(this)"></textarea>
+  </div>
+
+  <textarea id="textar" name="" cols="30" rows="10" placeholder="내용 10자 이내로 입력해 주세요."></textarea>
+</body>
+
+
+<script>
+  //첫번째 방법 
+  // textarea 에 임의로 maxLength를 사용해주면 적용된다.
+  function maxLengthCheck(object) {
+    if (object.value.length > object.maxLength) {
+      // 현재 object의 입력 value 길이와 object에 정의한 maxLength의 길이를 비교해서 value 길이가 더 크면
+      object.value = object.value.slice(0, object.maxLength);
+      // value의 0부터 maxLength의 길이까지 잘라라
+
+      // .slice(start, end)
+      // 파라미터로는 자르려는 문자열의 시작 index와 끝 index를 전달함
+    }
+  }
+
+
+  // 두번째 방법
+  // 입력 글 limitNum 숫자에 맞춰 체인지
+  let limitNum = 20;
+  textar.addEventListener('change', function () {
+    if (this.value.length >= limitNum) {
+      this.value = this.value.substring(0, limitNum);
+    }
+  })
+</script>
+
+</html>
