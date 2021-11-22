@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Object(객체)] 02.객체에-특정속성이-존재하는지-체크</title>
+
+</head>
+
+<body>
+  <header>
+    <h2>[Object(객체)] 02. 객체에 특정 속성이 존재하는지 체크하는 3가지 방법</h2>
+    <p>
+      1. hasOwnProperty() 함수 <br />
+      - toString과 같은 객체로부터 상속받은 속성은 체크되지 않습니다.<br /><br />
+
+      2. in 연산자 사용하기<br />
+      - toString과 같은 객체로부터 상속받은 속성까지 모두 체크됩니다.<br /><br />
+
+      3. undefined와 비교하기<br />
+      - 속성 값이 undefined인 경우, 속성이 존재하지 않는 것처럼 체크됩니다.<br /><br />
+    </p>
+  </header>
+
+  <script>
+    /*---------------------------------------------------------------------
+    1. hasOwnProperty() 함수
+        파라미터로 전달된 property(속성)가 객체에 존재하면 true를 리턴
+                                          존재하지 않으면 false를 리턴
+    ---------------------------------------------------------------------*/
+
+    const person = {
+      name: 'alice',
+      country: 'korea'
+    }
+
+    const havaName = person.hasOwnProperty('name');
+    const haveAge = person.hasOwnProperty('age');
+
+    document.writeln(havaName);
+    document.writeln(haveAge);
+
+    /*---------------------------------------------------------------------
+    2. in 연산자 사용하기
+        파라미터로 전달된 property(속성)가 객체에 존재하면 true를 리턴
+                                          존재하지 않으면 false를 리턴
+    ---------------------------------------------------------------------*/
+    const havaName2 = 'name' in person;
+    const haveAge2 = 'age' in person;
+
+    document.writeln(havaName2);
+    document.writeln(haveAge2);
+
+
+    /*---------------------------------------------------------------------
+    hasOwnProperty() vs in 연산자 차이
+      toString 메소드는 모든 객체가 공통적으로 가지는 속성
+      hasOwnProperty 메소드는, 이렇게 객체로부터 상속받은 속성을 체크하면 false를 리턴
+      in 연산자의 경우에는, toString과 같이 객체로부터 상속받은 속성을 체크하면 true를 리턴
+    ---------------------------------------------------------------------*/
+    const hasOwnPropertyTest = person.hasOwnProperty('toString');
+    const inTest = 'toString' in person;
+
+    document.writeln(hasOwnPropertyTest);
+    document.writeln(inTest);
+
+
+    /*---------------------------------------------------------------------
+    3. undefined와 비교하기
+      'person.age'와 같이, 객체에 존재하지 않는 속성(property)에 접근하면 undefined가 리턴
+      이런 특징을 이용해서, 객체에 특정 속성이 존재하는지 여부를 체크 가능
+    ---------------------------------------------------------------------*/
+    const haveName3 = person.name !== undefined;
+    const haveAge3 = person.age !== undefined;
+
+    document.writeln(haveName3);
+    document.writeln(haveAge3);
+
+
+    /*---------------------------------------------------------------------
+      주의할점
+      person 객체에 age 속성이 존재하지만, 그 값이 undefined로 정의되어 있다.
+      이 경우, person.age를 undefined 값과 비교하면 true를 리턴한다.
+
+      따라서, 이 경우에는 원하는 결과와 다른 값을 얻게 된다.
+      실제로 속성이 존재하지만, 속성값이 undefined이기 때문에, 
+      위 코드에서는 마치 age 속성이 존재하지 않는 것과 같은 결과를 얻게된다.
+    ---------------------------------------------------------------------*/
+    const person2 = {
+      name: 'alice',
+      country: 'korea',
+      age: undefined
+    }
+
+    const haveAge = person2.age !== undefined;
+
+    document.writeln(haveAge);
+  </script>
+</body>
+
+</html>

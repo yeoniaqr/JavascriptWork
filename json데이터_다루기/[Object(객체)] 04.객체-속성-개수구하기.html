@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Object(객체)] 04.객체-속성-개수구하기</title>
+
+</head>
+
+<body>
+  <header>
+    <h2>[Object(객체)] 04.객체(Object) 속성(property) 개수 구하기</h2>
+    <p>
+      1. Array.from() <br />
+      2. Spread Operator (전개 연산자)<br />
+      3. forEach
+    </p>
+  </header>
+
+  <script>
+    /*---------------------------------------------------------------------
+      1. 객체 속성 개수 구하기
+          const count = Object.keys(obj).length;
+          Object.keys() 함수를 이용해서 객체가 가지고 있는 key값들을 배열로 리턴
+    ---------------------------------------------------------------------*/
+    const obj = {
+      product: 'book',
+      id: 123,
+      page: 23
+    };
+
+    const count = Object.keys(obj).length;
+    //Object.keys(obj)는 "['product', 'id', 'page']"를 리턴
+    // 그 배열 길이 length 속성을 사용하게 되면 그 값이 결국 객체의 속성 개수가 된다.
+
+
+    document.write(count);
+  </script>
+</body>
+
+</html>

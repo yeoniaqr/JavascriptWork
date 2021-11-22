@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Object(객체)] 03.set객체를-배열(array)로-변환하기</title>
+
+</head>
+
+<body>
+  <header>
+    <h2>[Object(객체)] 03.set객체를-배열(array)로-변환하기</h2>
+    <p>
+      1. Array.from() <br />
+      2. Spread Operator (전개 연산자)<br />
+      3. forEach
+    </p>
+  </header>
+
+  <script>
+    /*---------------------------------------------------------------------
+      1. Array.from()
+        유사배열객체(array-like object)나 반복가능객체(iterable object)를
+        얕은 복사(shallow copy)하여 새로운 배열(Array) 객체를 만들어준다.
+
+        유사배열객체(array-like object) : length 속성과 index element를 가지는 객체
+        반복가능객체(iterable object) : 배열을 일반화한 객체 ex)Map, Set
+    ---------------------------------------------------------------------*/
+    const set = new Set([1, 2, 3]);
+
+    const arr = Array.from(set);
+
+    document.write(Array.isArray(arr));
+    document.write('<br>');
+    document.write(arr);
+    document.write('<br><br>');
+
+    /*---------------------------------------------------------------------
+      2. Spread Operator (전개 연산자)
+          Spread Operator는 ES6의 문법으로
+          배열이나 문자열과 같이 반복가능한 객체를 하나씩 펼쳐서 리턴(전개)
+          '...'과 같이 점 3개로 표시
+    ---------------------------------------------------------------------*/
+    const set2 = new Set([1, 2, 3]);
+
+    const arr2 = [...set2];
+    //Spread Operator(전개연산자) '...'을 사용하여 Set 객체의 값들을 하나씩 전개하여(꺼내서), 
+    //새로운 배열의 원소로 넣어서, arr 변수에 저장
+
+
+    document.write(Array.isArray(arr2));
+    document.write('<br>');
+    document.write(arr2);
+    document.write('<br><br>');
+
+    /*---------------------------------------------------------------------
+      3. forEach - 반복문 이용
+    ---------------------------------------------------------------------*/
+    const set3 = new Set([1, 2, 3]);
+    const arr3 = [];
+
+    set3.forEach((element) => {
+      arr3.push(element);
+    })
+    // forEach문과 Array의 push() 함수를 사용하여
+    // Set 객체를 새로운 배열로 변환
+
+
+    document.write(Array.isArray(arr3));
+    document.write('<br>');
+    document.write(arr3);
+  </script>
+</body>
+
+</html>

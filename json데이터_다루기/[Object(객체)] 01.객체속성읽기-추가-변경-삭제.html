@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Object(객체)] 01.객체속성읽기-추가-변경-삭제</title>
+
+</head>
+
+<body>
+  <header>
+    <h2>[Object(객체)] 01.객체속성읽기-추가-변경-삭제</h2>
+    <p>
+      객체 속성 읽기 <br />
+      - 점 표기법 (dot notation)<br />
+      - 대괄호 표기법 (square bracket notation)
+
+      객체 속성 추가, 변경하기 <br />
+      - 점 표기법 (dot notation) <br />
+      - 대괄호 표기법 (square bracket notation) <br />
+      - 동적으로 객체 속성 추가/삭제하기 (Computed Property) <br />
+      객체 속성 삭제하기
+    </p>
+  </header>
+
+  <script>
+    /*---------------------------------------------------------------------
+    1. 객체 속성 읽기
+      객체 속성 읽는 방법
+      (1) 점표기법(dot notation)
+      (2) 대괄호 표기법(square bracket notation)
+    ---------------------------------------------------------------------*/
+
+    // 점 표기법
+    // 객체의 속성에 접근해서 값을 읽기 위해서 각 속성 사이에 '.'을 입력하였습니다.
+    const obj = {
+      id: 123,
+      product: {
+        type: 'book',
+        title: 'js start',
+        page: 200
+      }
+    };
+
+    document.write(obj.id + '<br>');
+    document.write(obj.product.type + '<br>');
+    document.write(obj.product.title + '<br>');
+    document.write(obj.product.page + '<br><br>');
+
+
+
+    // 대괄호 표기법 (square bracket notation)
+    // 접근하려고 하는 객체의 속성명을 괄호('[]')로 감싸서 표현 할 수 있다.
+    // 괄호 안에 들어가는 값은 작은 따음표 (''), 큰 따옴표("")로 감싸줘야 한다.
+    // 대괄효 쵸기법 사용했을때 좋은 법은 'product type' 속성과 같이 중간에 공백 값 접근 가능
+    const squareBracket = {
+      id: 123,
+      product: {
+        'product type': 'book',
+        title: 'JS Start',
+        page: 200
+      }
+    };
+
+    document.write(squareBracket['id'] + '<br>');
+    document.write(squareBracket.product['product type'] + '<br>');
+    document.write(squareBracket.product['title'] + '<br>');
+    document.write(squareBracket['product'].page + '<br><br>');
+
+
+    /*---------------------------------------------------------------------
+    2. 객체 속성 추가, 변경하기
+      (1) 점표기법(dot notation)
+      (2) 대괄호 표기법(square bracket notation)
+      (3) 동적으로 객체 속성 추가/삭제하기 (Computed Property)
+    ---------------------------------------------------------------------*/
+
+    const add = {
+      id: 123,
+      product: {
+        'product type': 'book',
+        title: 'JS Start',
+        page: 200
+      }
+    };
+
+    // 점 표기법 - 속성 추가
+    add.stock = 100;
+    document.write(add.stock + '<br>');
+
+    // 점 표기법 - 속성 값 변경
+    add.id = 456;
+    document.write(add.id + '<br><br>');
+
+
+    // 대괄호 표기법 - 속성 추가
+    add['stock'] = 100;
+    document.write(add.stock + '<br>');
+
+    // 대괄호 표기법 - 속성 값 변경
+    add['id'] = 456;
+    document.write(add.id + '<br><br>');
+
+    // 동적으로 객체 속성 추가/삭제하기 (Computed Property)
+    const computedProperty = {
+
+    };
+    ['red', 'green', 'blue'].forEach((color) => {
+      computedProperty[color] = color.substring(0, 1);
+    });
+
+    document.writeln(Object.keys(computedProperty).length + '<br>');
+
+    document.writeln(computedProperty.red + '<br>');
+    document.writeln(computedProperty.green + '<br>');
+    document.writeln(computedProperty.blue + '<br><br>');
+
+
+    /*---------------------------------------------------------------------
+    3. 객체 속성 삭제하기
+      객체의 속성을 삭제할 때는 delete 연산자를 사용
+    ---------------------------------------------------------------------*/
+    const objDelete = {
+      id: 123,
+      product: {
+        'product type': 'book',
+        title: 'JS Start',
+        page: 200
+      }
+    };
+
+    delete objDelete.id;
+    delete objDelete.product['product type'];
+
+    document.write(Object.keys(objDelete).length + '<br>'); // 1
+    document.write(objDelete.id + '<br>'); // undefined
+    document.write(objDelete.product['product type']); // undefined
+
+  </script>
+</body>
+
+</html>
