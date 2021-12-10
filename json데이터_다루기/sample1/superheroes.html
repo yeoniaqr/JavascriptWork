@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our superheroes</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- https://developer.mozilla.org/ko/docs/Learn/JavaScript/Objects/JSON  이 사이트를 따라해보세요.-->
+  <header>
+
+  </header>
+
+  <section>
+
+  </section>
+
+  <script>
+
+    var header = document.querySelector('header');
+    var section = document.querySelector('section');
+
+    var requestURL = 'superheroes.json'; // json 불러오기
+    var request = new XMLHttpRequest(); // new 키워드를 이용하여 XMLHttpRequest 생성자로부터 새로운 request 인스턴스를 생성
+
+    request.open('GET', requestURL); // 새로운 요청을 만듦
+
+    request.responseType = 'json'; // json으로 설정, json 파싱
+    request.send(); // 데이터 요청
+
+    console.log(request)
+    request.onload = function () {
+      var superHeroes = request.response; // 요청에 대한 응답을 변수에 저장
+      // 이제 JSON 데이터에 기반한 자바스크립트 객체를 포함하게 된다.
+
+      // 두개의 함수를 호출해 객체를 전달한다.
+      populateHeader(superHeroes); // haeder 객체
+      showHeroes(superHeroes); // 히어로에 대한 정보를 section내에 집어 넣을꺼임
+    }
+
+    //위에서 JSON데이터를 가져왔고, 자바스크립트 객체로 변환함!
+
+    //header
+    function populateHeader(jsonObj) { //매개변수 jsonObj
+      var myH1 = document.createElement('h1'); // 요소 추가
+      myH1.textContent = jsonObj['squadName']; // textContent - 텍스트노드 추가, 모든 텍스트를 반환함(띄어쓰기도 같이) / innerText은 불필요한 공백 제거됨
+      header.appendChild(myH1); // header 문서 끝에 myh1 붙인다
+
+      //id값 추가
+      myH1.id = 'article';
+      // class 값 추가
+      myH1.className = 'article';
+      // data 속성 값 추가
+      // 참고 : https://blogpack.tistory.com/680
+      myH1.dataset.size = "big";
+      myH1.dataset.add = "add";
+
+      var myPara = document.createElement('p'); // 요소 추가
+      myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + ' // Formed: ' + jsonObj['formed'];
+      header.appendChild(myPara); //header 문서 끝에 myPara 붙인다
+    }
+
+
+    //content
+    function showHeroes(jsonObj) { //매개변수 jsonObj
+      var heroes = jsonObj['members'];
+
+      console.log(heroes)
+      //id , class, data속성 값 셋팅
+      for (var i = 0; i < heroes.length; i++) { // i는 0 , i가 히어로 갯수보다 작으면 
+        var myArticle = document.createElement('article');
+        var myH2 = document.createElement('h2');
+        var myPara1 = document.createElement('p');
+        var myPara2 = document.createElement('p');
+        var myPara3 = document.createElement('p');
+        var myList = document.createElement('ul');
+
+        myH2.textContent = heroes[i].name; // h2에 heroes의 네임값 설정
+        myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity;
+        myPara2.textContent = 'Age: ' + heroes[i].age;
+        myPara3.textContent = 'Superpowers:';
+        // 각 태그 정보안에 secretIdentity, age, Superpowers 문장을 넣어주세요.
+
+        var superPowers = heroes[i].powers; // powers 설정
+
+        for (var j = 0; j < superPowers.length; j++) {
+          // 현재 히어로의 초능력을 반복 실행할 또다른 for 반복문을 사용합니다. 
+          var listItem = document.createElement('li'); // 하나의 객체씩 <li> 를 생성하고
+          listItem.textContent = superPowers[j]; // 그 안에 초능력을 집어 넣고, 
+          myList.appendChild(listItem);  // appendChild()를 사용하여 'myList' 라는 <ul> 안에  listItem 을 집어 넣습니다.
+
+        }
+
+        myArticle.appendChild(myH2);
+        myArticle.appendChild(myPara1);
+        myArticle.appendChild(myPara2);
+        myArticle.appendChild(myPara3);
+        myArticle.appendChild(myList);
+
+        section.appendChild(myArticle);
+      }
+    }
+  </script>
+</body>
+
+</html>

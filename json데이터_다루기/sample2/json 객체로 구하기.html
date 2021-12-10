@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>json 객체 구하기</title>
+</head>
+
+<body>
+  <!-- 얼마나 이해했는지 실력을 시험해봅시다. https://developer.mozilla.org/ko/docs/Learn/JavaScript/Objects/Test_your_skills:_JSON -->
+  <section></section>
+
+  <script>
+
+
+    const section = document.querySelector('section');
+
+    let para1 = document.createElement('p');
+    let para2 = document.createElement('p');
+
+    // 1) Json 가져오기
+
+    // fetch('sample.json')
+    //   .then(response => response.json())// response.json()은 응답 데이터를 JSON 개체로 변환하는 작업
+    //   .then(text => displayCatInfo(text))
+
+
+
+
+    var requestURL = 'sample1.json';
+    var request = new XMLHttpRequest();
+
+    request.open('GET', requestURL);
+
+    request.responseType = 'text';
+    request.send();
+
+    console.log(request)
+
+    request.onload = function () {
+      var JsonRequest = request.response;
+      var JsonRequestParse = JSON.parse(JsonRequest);
+      displayCatInfo(JsonRequestParse);
+    }
+
+    //위에서 JSON데이터를 가져왔고, 자바스크립트 객체로 변환함!
+
+
+
+
+    function displayCatInfo(catString) {
+      // 2) 어미 고양이 이름을 "," 나열 마지막 어미고양이 이름 전에는 "and"로 표기 
+      // var motherName = catString[0].name;
+      // var motherName2 = catString[1].name;
+      // var motherName3 = catString[2].name;
+      // motherInfo += motherName + ', ' + motherName2 + ' and ' + motherName3;
+
+      let motherInfo = '어미고양이의 이름은 ';
+      let kittenInfo = '새끼 고양이들의 이름은 ';
+      let total = 0;
+      let male = 0;
+      let female = 0;
+
+
+      //객체로 length 가져오기
+      // var testLength = catString;
+      // console.log(catString["1"]["name"])
+
+      var catStringLength = Object.entries(catString);
+
+      for (var i = 0; i < catStringLength.length - 1; i++) { // 전체 json 객체 -1 
+        var mothertest = catStringLength[i];
+        var t = mothertest[1]['name'];
+        motherInfo += t + ', ';
+      }
+      var lastName = catString[catStringLength.length]['name'];
+      motherInfo += 'and ' + lastName;
+
+
+
+      // //새끼고양이 이름 
+      for (var k = 0; k < catStringLength.length; k++) {
+        var kittenAll = catStringLength[k][1]['kittens'];
+        //토탈개수
+        total += kittenAll.length;
+
+        //새끼고양이 이름
+        for (var w = 0; w < kittenAll.length; w++) {
+          var kittenName = kittenAll[w].name;
+          kittenInfo += kittenName + ', ';
+
+          //수컷,암컷구분
+          var kittenGender = kittenAll[w].gender;
+          if (kittenGender == 'f') {
+            female += kittenGender.length;
+          } else if (kittenGender == 'm') {
+            male += kittenGender.length;
+          }
+        }
+      }
+
+      // 다른 코드를 편집하지 마세요!
+      kittenInfo += "새끼 고양이 전체 숫자는 " + total + "마리 이고 수컷은 " + male + '마리 ' + female + '마리 입니다.'
+
+      para1.textContent = motherInfo;
+      para2.textContent = kittenInfo;
+    }
+
+    section.appendChild(para1);
+    section.appendChild(para2);
+
+  </script>
+</body>
+
+</html>
