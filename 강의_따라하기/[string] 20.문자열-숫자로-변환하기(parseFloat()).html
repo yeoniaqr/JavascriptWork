@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[string] 20.문자열-숫자로-변환하기parseFloat()</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 문자열 숫자로 변환하기 (2) - parseFloat()</h2>
+  <p>
+    Javascript에서 문자열을 숫자로 변환하는 방법으로 다음 3가지 방법을 소개합니다.<br />
+    1. parseInt() 함수 사용<br />
+    2. parseFloat() 함수 사용<br />
+    3. +, * 연산자 사용
+  </p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    parseFloat()
+
+    parseFloat(string)
+    파라미터 : 변환할 문자열
+    리턴 값 :
+            파라미터로 입력받은 문자열을 실수로 변환 한 값을 리턴합니다.
+            파라미터로 입력받은 문자열을 실수로 변환할 수 없는 경우에는 NaN (Not a Number) 값을 리턴합니다.
+            첫 글자가 숫자로 변환할 수 있는 값(숫자(0~9), 기호(+, -), 소수점(.), 지수)이 아닌 경우, NaN을 리턴합니다.
+            첫 글자 이후에 숫자로 변환할 수 없는 값이 오는 경우, 그 이후 값들은 무시합니다.
+  -------------------------------------------------------------*/
+
+  document.writeln(parseFloat("10")); // 10
+  //입력받은 문자열에 소수점이하 자리가 없으므로, 그대로 정수 10을 리턴합니다.
+
+  document.writeln(parseFloat("-10")); // -10
+  //음수 값도 변환할 수 있습니다
+
+  document.writeln(parseFloat("10.9")); // 10.9
+  //문자열을 실수로 변환하여 실수를 리턴하였습니다.
+
+  document.writeln(parseFloat(10.9)); // 10.9
+  //파라미터로 문자열이 전달되지 않고, 다른 타입의 값이 전달되면
+  //전달된 파라미터를 문자열로 변환한 후, 실수로 변환하여 그 값을 리턴합니다.
+
+  document.writeln(parseFloat("10.9abcd")); // 10.9
+  //첫 글자 이후에 숫자로 변환할 수 없는 값이 오는 경우, 그 이후 값들은 무시합니다.
+  //'abcd'는 숫자로 변환할 수 있는 값이 아니고, 첫 글자가 아니므로 무시됩니다.
+
+  document.writeln(parseFloat("10.9abcd55")); // 10.9
+  // 첫 글자 이후에 숫자로 변환할 수 없는 값이 오는 경우, 그 이후 값들은 무시합니다.
+  // 10.9까지만 숫자로 변환할 수 있고, abcd는 숫자로 변환할 수 없습니다.
+  // 55는 숫자로 변환할 수 있지만, abcd(숫자로 변환할 수 없는 값) 이후에 있으므로 무시됩니다.
+
+  document.writeln(parseFloat("abcd10.9")); // NaN
+  //첫 글자가 숫자로 변환할 수 있는 값(숫자(0~9), 기호(+, -), 소수점(.), 지수)이 아닌 경우, NaN을 리턴합니다.
+
+  document.writeln(parseFloat("    10.9")); // 10.9
+  //첫 글자가 공백인 경우에, 공백은 무시됩니다.
+
+  document.writeln(parseFloat("10.9   ")); // 10.9
+  // 첫 글자 이후에 숫자로 변환할 수 없는 값이 오는 경우, 그 이후 값들은 무시합니다.
+  // 공백도 숫자로 변환할 수 없는 글자이므로, 무시됩니다.
+
+  document.writeln(parseFloat("")); // NaN
+  //공백 문자만 입력된 경우, 변환할 수 있는 숫자가 없으므로 NaN을 리턴합니다.
+
+</script>
+
+</html>

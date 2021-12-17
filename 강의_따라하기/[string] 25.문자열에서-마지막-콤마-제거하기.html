@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[string] 25.문자열에서-마지막-콤마-제거하기</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 문자열에서 마지막 콤마 제거하기</h2>
+  <p>
+    const str1 = "apple, banana"; <br />
+    const str2 = "apple, banana,";<br />
+    const str3 = "apple, banana, ";<br /><br />
+
+    str1과 같이 문자열의 끝에 콤마가 없을 경우, 문자열을 그대로 유지하고,<br />
+    str2와 같이 문자열의 끝에 콤마가 있을 경우, 문자열에서 콤마를 제거하고,<br />
+    str3과 같이 문자열의 끝에 콤마가 있고, 빈 공백이 이어진 경우, 문자열에서 콤마를 제거하는 방법을 소개합니다.
+
+  </p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    1. replace() 함수 사용하기
+  -------------------------------------------------------------*/
+  const str1 = "apple, banana";
+  const str2 = "apple, banana,";
+  const str3 = "apple, banana,    ";
+
+  // 마지막 콤마를 삭제하기 위해서 replace 함수와 정규식을 사용
+  const rslt1 = str1.replace(/,\s*$/, "");
+  const rslt2 = str2.replace(/,\s*$/, "");
+  const rslt3 = str3.replace(/,\s*$/, "");
+
+  document.write(rslt1);
+  document.write("<br />");
+  document.write(rslt2);
+  document.write("<br />");
+  document.write(rslt3);
+
+  /*
+    정규식(/,\s*$/)
+
+      /  : 정규식 전체를 둘러싸고 있는 '/'는 정규식의 시작과 끝을 표시합니다.
+      , : 우리가 찾고 있는 콤마(,) 문자입니다.
+      \s : space 나 tab과 같은 공백을 나타냅니다. 여기서는 str3의 예제와 같이 콤마뒤에 이어지는 공백을 찾습니다.
+      * : 0번 이상을 의미합니다. 여기서는 공백이 0번 이상 나타남을 의미합니다.
+      $ : 문자열의 끝을 의미합니다.
+      
+      즉, 위 정규식은 문자열의 끝에서 콤마와 0번이상의 공백이 있는 경우를 찾게 됩니다.
+      그리고, replace() 함수는 정규식에서 찾은 '콤마와 0번 이상의 공백'을 ""(비어있는 문자열)로 치환합니다.
+
+  */
+</script>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Type체크]02.배열인지-확인하기</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 배열인지 확인하기 - isArray()</h2>
+  <p></p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    isArray() 
+    Array.isArray(obj)
+    파라미터로 입력받은 obj가 배열인지 여부를 boolean값으로 리턴합니다.
+
+    파라미터 : 배열인지 검사할 객체
+    리턴값 : 객체가 배열이면 true, 배열이 아니면 false 값 리턴
+  -------------------------------------------------------------*/
+  document.writeln(Array.isArray([1, 2])); // true
+  document.writeln(Array.isArray(new Array(3))); // true
+
+  document.writeln(Array.isArray({})); // false
+</script>
+
+</html>

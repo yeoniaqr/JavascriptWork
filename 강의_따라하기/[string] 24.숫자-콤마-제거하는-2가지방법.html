@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[string] 24.숫자-콤마-제거하는-2가지방법</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 숫자 콤마 제거 하는 2가지 방법</h2>
+  <p>1. replace() 함수 사용하기 <br />
+    2. split(), join() 함수 사용하기
+  </p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    1. replace() 함수 사용하기
+  -------------------------------------------------------------*/
+  const numberStr = "123,456,789";
+
+  // 콤마 제거
+  const number = numberStr.replace(",", "");
+  document.write(number);
+
+  // 전체 콤마 제거
+  const number2 = numberStr.replace(/,/g, ""); //일반 문자열 대신 정규식
+  document.write(number2);
+
+  /*
+    /,/g
+      이 정규식은 매우 간단한 정규식입니다.
+      정규식은 '/'로 감싸서 작성합니다.
+      즉, '/,/'은 단순히 ','(콤마)를 찾는 정규식입니다.
+      그리고, 뒤에 붙은 'g'는 문자열 전체에서 콤마를 찾도록 해주는 플래그 입니다.
+      (정규식의 'g'를 한번 삭제하고 실행해 보세요. 그러면, 이전 예제와 같이 첫번째 콤마만 삭제됩니다.)
+  * /
+
+
+  /* ------------------------------------------------------------
+    2. split(), join() 함수 사용하기
+  -------------------------------------------------------------*/
+
+  // 전체 콤마 제거
+  const number3 = numberStr.split(',').join("");
+  document.write(number3);
+
+  /*
+    split()
+      split() 함수는 문자열을 첫번째 파라미터(여기서는 ',')로 잘라서 배열로 반환하는 함수입니다.
+      위 예제에서는 ["123", "456", "789"] 를 리턴하겠죠?
+
+    join()
+      join() 함수는 배열의 모든 요소를 연결해 하나의 문자열로 만들어 줍니다.
+      split() 함수가 리턴한 값이 ["123", "456", "789"] 이니까
+      이 배열의 문자열을 모두 연결하면, "123456789"가 되겠죠?
+  */
+</script>
+
+</html>

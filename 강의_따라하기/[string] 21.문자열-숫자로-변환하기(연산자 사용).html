@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[string] 20.문자열-숫자로-변환하기 - +, * 연산자 사용</title>
+</head>
+
+<body>
+
+  <h2>[Javascript] 문자열 숫자로 변환하기 (2) - parseFloat()</h2>
+  <p>
+    Javascript에서 문자열을 숫자로 변환하는 방법으로 다음 3가지 방법을 소개합니다.<br />
+    1. parseInt() 함수 사용<br />
+    2. parseFloat() 함수 사용<br />
+    3. +, * 연산자 사용
+  </p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    "+" 단항 연산자 사용하기 (Unary plus)
+    문자열 앞에 단항 연산자 (+)를 붙여주면, 문자열을 숫자 타입으로 변환하여 리턴합니다.
+    만약, 문자열을 숫자로 변경할 수 없다면 NaN (Not a Number)를 리턴합니다.
+  -------------------------------------------------------------*/
+  document.writeln(+"10"); // 10 - 정수 10을 리턴합니다.
+  document.writeln(+"10.1"); // 10.1  -  실수 10.1을 리턴합니다.
+  document.writeln(+"-10"); // -10 - 음수도 처리할 수 있습니다.
+  document.writeln(+"abc"); // NaN  -  숫자로 변경할 수 없는 문자열이기 때문에, NaN을 리턴합니다.
+  document.writeln(+true); // 1  -  boolean 값은 true인 경우 1, false인 경우 0을 리턴합니다.
+  document.writeln(+false); // 0   -  boolean 값은 true인 경우 1, false인 경우 0을 리턴합니다.
+
+
+  /* ------------------------------------------------------------
+    곱하기(*) 연산자
+    숫자로 변환할 문자열에 "곱하기 1" 을 해주면 문자열이 숫자로 변환됩니다.
+    만약, 문자열을 숫자로 변경할 수 없다면 NaN (Not a Number)를 리턴합니다.
+  -------------------------------------------------------------*/
+  document.writeln("10" * 1); // 10  -  정수 10을 리턴합니다.
+  document.writeln("10.1" * 1); // 10.1  -  실수 10.1을 리턴합니다.
+  document.writeln("-10" * 1); // -10  -  음수도 처리할 수 있습니다.
+  document.writeln("abc" * 1); // NaN  -  숫자로 변경할 수 없는 문자열이기 때문에, NaN을 리턴합니다.
+
+</script>
+
+</html>
