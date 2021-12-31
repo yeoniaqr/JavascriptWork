@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[array 배열]14.배열 map() 함수로 변경된 새로운 배열 생성하기</title>
+</head>
+
+<body>
+
+  <h2>[array 배열]14.배열 map() 함수로 변경된 새로운 배열 생성하기</h2>
+  <p>
+    map() 함수로 새로운 배열 생성하기 <br />
+    arr.map(callback(currentValue[, index[, array]])[, thisArg])<br /><br />
+    map() 함수는...<br />
+    배열(arr)의 각각의 element들이 callback 함수의 파라미터로 전달되고,<br />
+    map() 함수는 이 callback 함수가 return 하는 값으로 새로운 배열을 만들어서 리턴합니다.<br /><br />
+
+    파라미터<br />
+    callback(currentValue, index, array)<br />
+    새로운 배열을 생성하는 함수이고, 다음 3개의 파라미터를 받습니다.<br />
+    currentValue : 현재 처리중인 배열의 element<br />
+    index(optional) : 현재 처리중인 배열의 index<br />
+    array(optional) : 현재 처리중인 배열<br />
+    thisArg (optional)<br />
+    callback을 실행할 때 this로 사용할 객체입니다.<br /><br />
+
+    리턴값<br />
+    callback함수에 의해서 변경된 arr의 새로운 배열이 리턴됩니다.<br />
+    이때, 원래의 배열인 arr는 변경되지 않습니다.<br />
+  </p>
+</body>
+<script>
+
+  /* ------------------------------------------------------------
+    예제 1
+  -------------------------------------------------------------*/
+  const arr1 = [1, 2, 3, 4];
+
+  const arr2 = arr1.map((currValue) => currValue + 1);
+  const arr3 = arr1.map(function add(currValue) {
+    return currValue + 1;
+  })
+
+  document.writeln(arr1 + '<br>'); // [1, 2, 3, 4]
+  document.writeln(arr2 + '<br>'); // [2, 3, 4, 5]
+  document.writeln(arr3 + '<br>'); // [2, 3, 4, 5]
+  /* ------------------------------------------------------------
+    예제 2  
+  -------------------------------------------------------------*/
+  const arr1 = [1, 2, 3, 4];
+
+  const arr2 = arr1.map(function add(currValue) {
+    currValue = currValue + 1;
+  })
+
+  document.writeln(arr1 + '<br>'); // [1, 2, 3, 4]
+  document.writeln(arr2[0] + '<br>'); // undefined
+
+</script>
+
+</html>

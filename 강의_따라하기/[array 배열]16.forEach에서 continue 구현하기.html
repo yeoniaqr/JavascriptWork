@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[array 배열]16.forEach에서 continue 구현하기</title>
+</head>
+
+<body>
+
+  <h2>[array 배열]16.forEach에서 continue 구현하기</h2>
+  <p></p>
+</body>
+<script>
+
+  /* ------------------------------------------------------------
+    1. for...of 구문 사용하기
+  -------------------------------------------------------------*/
+  const arr = [1, 2, 3];
+
+  for (const element of arr) {
+    if (element === 1) continue;
+
+    document.writeln(element);
+  }
+  /* ------------------------------------------------------------
+    2. return문 사용하기
+  -------------------------------------------------------------*/
+  const arr1 = [1, 2, 3];
+
+  arr1.forEach(element => {
+    if (element === 1) {
+      return;
+    }
+    document.writeln(element);
+  });
+  /* ------------------------------------------------------------
+    3. filter 사용하기
+  -------------------------------------------------------------*/
+  const arr2 = [1, 2, 3];
+
+  arr2
+    .filter(element => element !== 1)
+    .forEach(element => document.writeln(element));
+
+</script>
+
+</html>

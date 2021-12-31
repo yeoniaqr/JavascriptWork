@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[array 배열]05.배열 합치기 3가지 방법</title>
+</head>
+
+<body>
+
+  <h2>[array 배열]05.배열 합치기 3가지 방법</h2>
+  <p>
+    열 합치기 3가지 방법 <br />
+    1. concat() 함수<br />
+    2. ... spread operator (전개 연산자)<br />
+    3. push() 함수와 spread operator<br />
+  </p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    1. concat() 함수
+    array.concat([value1[, value2[, ...[, valueN]]]])
+
+    concat() 함수는
+      파라미터로 받은 배열이나 값들을 기존의 배열에 합쳐서,
+      새로운 배열을 만들어서 리턴합니다.
+
+    파라미터 
+      value1~valueN
+      기존 배열에 합칠 배열 또는 값
+
+    리턴값 
+      기존 배열(array)와 파라미터로 받은 값(value1~valuneN)을 합쳐서 새로 만든 배열
+  -------------------------------------------------------------*/
+  const arr = [1, 2, 3];
+  const newArr = arr.concat('a', ['b', 'c'], 'abc');
+
+  document.writeln(arr + '<br>'); // [1, 2, 3]
+  document.writeln(newArr.length + '<br>'); // 7
+  document.writeln(newArr); // [1, 2, 3, 'a', 'b','c', 'abc']
+
+  /* ------------------------------------------------------------
+배열 합치기 예제 (spread operator) 
+-------------------------------------------------------------*/
+  const arr1 = [1, 2, 3];
+  const arr2 = [4, 5, 6];
+  const arr3 = [7, 8, 9];
+
+  const newArr = [
+    ...arr1,
+    ...arr2,
+    ...arr3
+  ];
+
+  document.write(newArr.length + '<br>');
+  document.write(newArr);
+  /* ------------------------------------------------------------
+  3. push() 함수와 spread operator
+-------------------------------------------------------------*/
+  const arr4 = [1, 2, 3];
+  const arr5 = [4, 5, 6];
+
+  arr4.push(arr5);
+
+  document.write(arr4.length + '<br>'); // 4
+  document.write(arr4[0] + '<br>'); // 1 
+  document.write(arr4[1] + '<br>'); // 2
+  document.write(arr4[2] + '<br>'); // 3
+  document.write(arr4[3] + '<br>'); // [4, 5, 6]
+
+
+  /* ------------------------------------------------------------
+  push() 함수와 spread operator(...)로 배열 합치기 
+-------------------------------------------------------------*/
+  const arr1 = [1, 2, 3];
+  const arr2 = [4, 5, 6];
+
+  arr1.push(...arr2);
+
+  document.write(arr1.length + '<br>'); // 6
+  document.write(arr1[0] + '<br>'); // 1 
+  document.write(arr1[1] + '<br>'); // 2
+  document.write(arr1[2] + '<br>'); // 3
+  document.write(arr1[3] + '<br>'); // 4
+  document.write(arr1[4] + '<br>'); // 5
+  document.write(arr1[5] + '<br>'); // 6
+
+</script>
+
+</html>
