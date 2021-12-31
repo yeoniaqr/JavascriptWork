@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Boolean Type]07.반복문(3) - do..while</title>
+</head>
+
+<body>
+
+  <h2>[Boolean Type]07.반복문(3) - do..while</h2>
+  <p>
+    do...while<br />
+    do {<br />
+    // 반복할 코드<br />
+    }<br />
+    while (조건문);<br /><br />
+
+    do...while문은 조건문을 판단하기 전에 do 블록의 코드를 먼저 실행합니다.<br />
+    그리고, 조건문을 판단하여, 조건문의 결과가 true이면 do 블록의 코드를 다시 실행합니다.<br />
+    이 과정을 반복합니다.<br />
+  </p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    예제 1
+  -------------------------------------------------------------*/
+  let i = 1;
+  do {
+    const text = i + "번 째 반복문<br>";
+    document.write(text);
+    i++;
+  }
+  while (i <= 5);
+
+  /* ------------------------------------------------------------
+    예제 2 - while문과 do...while의 차이점
+    while문은
+      처음 while문을 실행시켰을 때 while문의 결과가 false이면
+      while문 안의 코드블록은 한 번도 실행되지 않을 수도 있습니다.
+
+    do...while문은
+      조건문의 결과와 상관없이 무조건 do 블록의 코드가 적어도 1번은 실행됩니다.
+  -------------------------------------------------------------*/
+  // do..while
+  let w = 1;
+  do {
+    const text = w + "번 째 반복문<br>";
+    document.write(text);
+    w++;
+  }
+  while (w < 1);
+
+  // while
+  let j = 1;
+  while (j < 1) {
+    const text = j + "번 째 반복문<br>";
+    document.write(text);
+    j++;
+  }
+</script>
+
+</html>

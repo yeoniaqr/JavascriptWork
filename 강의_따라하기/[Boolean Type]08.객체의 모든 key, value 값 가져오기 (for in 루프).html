@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Boolean Type]08.객체의 모든 key, value 값 가져오기 (for in 루프)</title>
+</head>
+
+<body>
+
+  <h2>[Boolean Type]08.객체의 모든 key, value 값 가져오기 (for in 루프)</h2>
+  <p>
+    객체의 모든 프로퍼티를 순회하기 위해서는 <br /><br />
+
+    for...in 반복문을 사용합니다.<br />
+    for (variable in object) {<br />
+    // 코드블럭<br />
+    }<br /><br />
+    variable : object에서 순차적으로 하나씩 꺼내온 property(속성)의 key(이름)<br />
+    object : 탐색할 object<br />
+  </p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    예제 1
+  -------------------------------------------------------------*/
+  const person = { //person 이라는 객체를 만들고, nama, age, id 속성을 정의하였습니다.
+    name: 'Anna',
+    age: 20,
+    id: 'hianna'
+  };
+
+  for (prop in person) { //for...in 반복문을 사용하여, 객체 안의 속성을 하나씩 탐색하면서 key, value를 출력합니다.
+    //person 객체에서 prop 이라는 이름으로 속성을 하나씩 추출
+    //prop이라는 이름으로 객체의 각각의 속성명에 접근
+    document.write(prop + " : " + person[prop] + '<br>');
+  }
+  //속성명(key) 출력 : prop은 객체의 속성명을 출력합니다.
+  //속성값(value) 출력 : person[속성명] 구문을 사용하였습니다.
+
+
+</script>
+
+</html>

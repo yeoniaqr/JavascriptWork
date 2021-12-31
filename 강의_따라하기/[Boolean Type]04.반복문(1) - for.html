@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Boolean Type]04.반복문(1) - for</title>
+</head>
+
+<body>
+
+  <h2>[Boolean Type]04.반복문(1) - for</h2>
+  <p>
+    for<br />
+    for (초기화; 조건식; 증감문) {<br />
+    // 반복할 코드<br />
+    }<br /><br />
+    먼저 for문의 문법은 위와 같습니다.<br />
+
+    초기화 - for문이 실행되기 전 1번만 수행됩니다.<br />
+    조건식 - for문이 실행되기 위한 조건입니다. 이 조건문의 결과가 true이면 for문 안의 코드는 계속 실행됩니다.<br />
+    증감문 - for문 안의 코드가 실행 된 후, 매번 수행되는 코드입니다.<br />
+  </p>
+</body>
+
+
+<script>
+  /* ------------------------------------------------------------
+    예제1
+    i변수의 초기값은 0이고,
+    반복문을 돌 때마다 i 변수의 값은 1씩 증가합니다.
+    i의 값이 5보다 작을 동안(즉, i가 5가 되면 반복문 중지) for문 안의 코드를 실행합니다.
+  -------------------------------------------------------------*/
+  for (let i = 0; i < 5; i++) {
+    const text = i + "번 째 반복문<br>";
+    document.write(text);
+  }
+
+  /* ------------------------------------------------------------
+    예제2 배열 읽어오기
+  -------------------------------------------------------------*/
+  const colors = ['red', 'green', 'yellow'];
+  for (let i = 0; i < colors.length; i++) {
+    const text = 'This is ' + colors[i] + '<br>';
+    document.write(text);
+  }
+</script>
+
+</html>
