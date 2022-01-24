@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[array 배열]23.빈 배열 체크하기</title>
+</head>
+
+<body>
+
+  <h2>[array 배열]23.빈 배열 체크하기</h2>
+  <p></p>
+</body>
+<script>
+
+  /* ------------------------------------------------------------
+  빈 배열 체크하기
+  -------------------------------------------------------------*/
+  const arr1 = [];
+  const arr2 = [1, 2];
+  const obj = {};
+  const str = "";
+
+  function isEmptyArr(arr) {
+    if (Array.isArray(arr) && arr.length === 0) {
+      return true;
+    }
+
+    return false;
+  }
+
+  document.writeln(isEmptyArr(arr1)); // true
+  document.writeln(isEmptyArr(arr2)); // false
+  document.writeln(isEmptyArr(obj));  // false
+  document.writeln(isEmptyArr(str));  // false
+</script>
+
+</html>

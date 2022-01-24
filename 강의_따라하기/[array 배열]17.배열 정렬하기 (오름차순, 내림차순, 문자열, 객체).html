@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[array 배열]17.배열 정렬하기 (오름차순, 내림차순, 문자열, 객체)</title>
+</head>
+
+<body>
+
+  <h2>[array 배열]17.배열 정렬하기 (오름차순, 내림차순, 문자열, 객체)</h2>
+  <p>
+    배열 정렬하기 (오름차순, 내림차순, 문자열, 객체) <br /><br />
+
+
+    1. sort() 함수 <br />
+    2. sort() 함수로 숫자 오름차순 정렬하기 <br />
+    3. sort() 함수로 숫자 내림차순 정렬하기 <br />
+    4. sort() 함수로 문자열 정렬하기 <br />
+    5. sort() 함수로 문자열(대소문자 구분없이) 정렬하기 <br />
+    6. sort() 함수로 객체 정렬하기
+  </p>
+</body>
+<script>
+
+  /* ------------------------------------------------------------
+    1. sort() 함수
+    Javascript에서 배열을 정렬하기 위해서는 sort() 함수를 사용합니다.
+    arr.sort([compareFunction])
+  -------------------------------------------------------------*/
+  const arr1 = [2, 1, 3];
+  const arr2 = ['banana', 'apple', 'orange']
+
+  arr1.sort();
+  document.writeln(arr1 + '<br>'); // [1, 2, 3]
+
+  arr2.sort();
+  document.writeln(arr2 + '<br>'); // ['apple', 'banana', 'orange']
+
+  /* ------------------------------------------------------------
+    예제 2.
+    sort() 함수는 파라미터(compareFunction)가 입력되지 않으면, 유니코드 순서에 따라서 값을 정렬합니다.
+    따라서, 유니코드 순서에 따라 [1, 10, 2, 3] 으로 정렬되었습니다.
+  -------------------------------------------------------------*/
+  const arr3 = [2, 1, 3, 10];
+
+  arr3.sort();
+  document.writeln(arr3 + '<br>'); // [1, 10, 2, 3]
+
+  /* ------------------------------------------------------------
+  예제 3.
+  sort() 함수의 파라미터로 함수를 정의
+-------------------------------------------------------------*/
+  const arr4 = [2, 1, 3, 10];
+
+  arr4.sort(function (a, b) {
+    if (a > b) return 1;
+    if (a === b) return 0;
+    if (a < b) return -1;
+  });
+  document.writeln(arr4 + '<br>'); // [1, 2, 3, 10]
+
+
+  // 단순화
+  arr4.sort(function (a, b) {
+    return a - b;
+  });
+  document.writeln(arr4 + '<br>'); // [1, 2, 3, 10]
+
+
+  /* ------------------------------------------------------------
+    예제 4.
+    sort() 함수는 원본 배열을 정렬하고, 
+    원본 배열을 가리키는 배열을 리턴합니다.
+-------------------------------------------------------------*/
+  const arr5 = [2, 1, 3];
+
+  const arr6 = arr5.sort();
+  document.writeln(arr5 + '<br>'); // [1, 2, 3]
+  document.writeln(arr6 + '<br>'); // [1, 2, 3]
+
+  arr5.push(4);
+  document.writeln(arr5 + '<br>'); // [1, 2, 3, 4]
+  document.writeln(arr6 + '<br>'); // [1, 2, 3, 4]
+
+
+  /* ------------------------------------------------------------
+  2. sort() 함수로 숫자 오름차순 정렬하기
+-------------------------------------------------------------*/
+  const arr7 = [2, 1, 3, 10];
+
+  arr7.sort(function (a, b) {
+    return a - b;
+  });
+  document.writeln(arr7 + '<br>'); // [1, 2, 3, 10]
+
+
+  /* ------------------------------------------------------------
+    3. sort() 함수로 숫자 내림차순 정렬하기
+  -------------------------------------------------------------*/
+  const arr8 = [2, 1, 3, 10];
+
+  arr8.sort(function (a, b) {
+    return b - a;
+  });
+  document.writeln(arr8 + '<br>'); // [10, 3, 2, 1]
+
+  /* ------------------------------------------------------------
+  4. sort() 함수로 문자열 정렬하기
+-------------------------------------------------------------*/
+  //오름차순으로 정렬하기
+  const arr9 = ['banana', 'b', 'boy'];
+
+  arr9.sort();
+  document.writeln(arr9 + '<br>'); // ['b', 'banana', 'boy']
+
+
+  //내림차순으로 정렬하기 
+  const arr10 = ['banana', 'b', 'boy'];
+
+  arr10.sort(function (a, b) {
+    if (a < b) return 1;
+    if (a > b) return -1;
+    if (a === b) return 0;
+  });
+  document.writeln(arr10 + '<br>'); // ['boy', 'banana', 'b']
+
+
+  /* ------------------------------------------------------------
+  5. sort() 함수로 문자열(대소문자 구분없이) 정렬하기
+  -------------------------------------------------------------*/
+  const arr11 = ['banana', 'b', 'Boy'];
+
+  arr11.sort();
+  document.writeln(arr11 + '<br>'); // ['Boy','b','banana']
+
+
+  //오름차순으로 정렬하기 (대소문자 구분없이)
+  const arr12 = ['banana', 'b', 'Boy'];
+
+  arr12.sort(function (a, b) {
+    const upperCaseA = a.toUpperCase();
+    const upperCaseB = b.toUpperCase();
+
+    if (upperCaseA > upperCaseB) return 1;
+    if (upperCaseA < upperCaseB) return -1;
+    if (upperCaseA === upperCaseB) return 0;
+  });
+
+  document.writeln(arr12 + '<br>'); // ['b', 'banana', 'Boy']
+
+  //내림차순으로 정렬하기 (대소문자 구분없이) 
+  const arr13 = ['banana', 'b', 'Boy'];
+
+  arr13.sort(function (a, b) {
+    const upperCaseA = a.toUpperCase();
+    const upperCaseB = b.toUpperCase();
+
+    if (upperCaseA < upperCaseB) return 1;
+    if (upperCaseA > upperCaseB) return -1;
+    if (upperCaseA === upperCaseB) return 0;
+  });
+
+  document.writeln(arr13 + '<br>'); // ['Boy', 'banana', 'b']
+  /* ------------------------------------------------------------
+  6.sort() 함수로 객체 정렬하기
+  -------------------------------------------------------------*/
+  const arr14 = [
+    { name: 'banana', price: 3000 },
+    { name: 'apple', price: 1000 },
+    { name: 'orange', price: 500 }
+  ];
+  arr14.sort(function (a, b) {
+    return a.price - b.price;
+  });
+
+  document.writeln(JSON.stringify(arr[0] + '<br />'));
+  document.writeln(JSON.stringify(arr[1] + '<br />'));
+  document.writeln(JSON.stringify(arr[2] + '<br />'));
+</script>
+
+</html>

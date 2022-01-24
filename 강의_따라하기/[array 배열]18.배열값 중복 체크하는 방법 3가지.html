@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[array 배열]18.배열값 중복 체크하는 방법 3가지</title>
+</head>
+
+<body>
+
+  <h2>[array 배열]18.배열값 중복 체크하는 방법 3가지</h2>
+  <p>
+    배열 값 중복 체크하는 3가지 방법 <br /><br />
+    1. 반복문 이용하기<br />
+    2. Set 객체 이용하기<br />
+    3. some(), indexOf(), lastIndexOf() 함수 이용하기
+  </p>
+</body>
+<script>
+
+  /* ------------------------------------------------------------
+  1. 반복문 이용하기  
+  -------------------------------------------------------------*/
+  const arr = ['a', 'b', 'c', 'b'];
+
+  let dupYn = false;
+  for (let i = 0; i < arr.length; i++) {
+    const currElem = arr[i];
+
+    for (let j = i; j < arr.length; j++) {
+      if (currElem === arr[j]) {
+        dupYn = true;
+        break;
+      }
+    };
+
+    if (dupYn) {
+      break;
+    }
+  };
+
+  document.writeln('DupYn :' + dupYn + '<br />');
+
+
+  /* ------------------------------------------------------------
+  2. set 객체 이용하기 
+      Set은 중복을 허용하지 않는 값을 모아놓은 Collection 객체입니다.
+      new Set([iterable]);
+  -------------------------------------------------------------*/
+  const arr2 = ['a', 'b', 'c', 'b'];
+  const set = new Set(arr2);
+
+  document.writeln(arr2.length + '<br />');
+  document.writeln(set.size + '<br />');
+
+  // duplicate
+  if (arr2.length !== set.size) {
+    document.writeln("duplicate");
+  }
+
+  //Set은 중복을 허용하지 않는 다는 점을 활용하여,
+  //원본 배열의 크기와, 원본 배열을 가지고 생성한 Set 객체의 크기를 비교하여
+  //중복이 존재하는지 확인 할 수 있습니다.
+
+
+  /* ------------------------------------------------------------
+    3. some(), indexOf(), lastIndexOf() 함수 이용하기   
+      some() 함수 
+        arr.some(callback(element[, index[, array]])[, thisArg])
+        some() 함수는 
+        배열에서 값을 찾는 조건을 callback 함수로 전달하고,
+        배열에 조건에 맞는 값이 하나라도 있는지 여부(boolean)를 리턴하는 하는 함수입니다.
+        조건에 맞는 값이 있으면 true, 조건에 맞는 값이 없으면 false를 리턴합니다.
+      
+
+      indexOf()
+        arr.indexOf(searchElement[, fromIndex])
+        배열 안에서 찾으려는 값(searchElement)과 정확하게 일치(===)하는'첫번째' element의 index를 리턴합니다.
+      
+      lastIndexOf() 
+        arr.lastIndexOf(searchElement[, fromIndex])
+        배열 안에서 찾으려는 값(searchElement)과 정확하게 일치(===)하는 '마지막' element의 index 를 리턴합니다.
+  -------------------------------------------------------------*/
+  function isDuplicate(arr3) {
+    const isDup = arr3.some(function (x) {
+      return arr3.indexOf(x) !== arr3.lastIndexOf(x);
+    });
+
+    return isDup;
+  }
+
+  const result = isDuplicate(['a', 'b', 'c', 'b']);
+  // true
+  document.writeln(result);
+
+</script>
+
+</html>
