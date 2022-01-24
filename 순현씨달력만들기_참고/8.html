@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  ul li {
+    list-style: none;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .calendar {
+    border: 1px solid #55acce;
+    border-radius: 6px;
+    width: 398px;
+    margin-top: 10px;
+  }
+
+  .calendar .day-content {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -1px;
+    margin-right: -1px;
+  }
+
+  .calendar .day-content .item {
+    position: relative;
+    z-index: -1;
+    width: 55px;
+    height: 55px;
+    border: 1px solid #eeeeee;
+    text-align: right;
+  }
+
+  .calendar .day-content .item p {
+    margin-right: 8px;
+    line-height: 18px;
+    font-size: 14px;
+  }
+
+  .calendar header {
+    width: 100%;
+    height: 90px;
+  }
+
+  .calendar header .date-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 65px;
+  }
+
+  .calendar header .date {
+    margin: auto 0;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .calendar header .day-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  header .day-list li {
+    width: 57px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    background-color: #55acce;
+  }
+
+  .arrow {
+    width: 5px;
+    display: block;
+    position: relative;
+  }
+
+  .arrow::after {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-top: 1.5px solid #0f0f0f;
+    border-left: 1.5px solid #0f0f0f;
+    content: "";
+    top: calc(50% - 5px);
+    right: 0;
+    transition: .5s;
+  }
+
+  .arrow.left {
+    margin-left: 30px;
+  }
+
+  .arrow.right {
+    margin-right: 30px;
+  }
+
+  .arrow.left::after {
+    transform: rotate(-45deg);
+  }
+
+  .arrow.right::after {
+    transform: rotate(135deg);
+  }
+</style>
+
+<body>
+  <div class="calendar">
+    <header>
+      <div class="date-content">
+        <span class="arrow left" onclick="datebtn(-1)"></span>
+        <p class="date"></p>
+        <span class="arrow right" onclick="datebtn(1)"></span>
+      </div>
+      <ul class="day-list">
+        <li>일</li>
+        <li>월</li>
+        <li>화</li>
+        <li>수</li>
+        <li>목</li>
+        <li>금</li>
+        <li>토</li>
+      </ul>
+    </header>
+    <section class="day-content">
+    </section>
+  </div>
+</body>
+<script>
+  /* 8) 디자인 완성본*/
+
+  //완성본 제작하기
+
+  let num = 10;
+  let newDate;
+  let date;
+  let dateIndex = 0;
+  datebtn(0);
+  //초기 월 세팅
+  async function datebtn(_num) {
+    // 초기화
+    date = "";
+
+    // 현재 달에 증가 감소 세팅
+    num += _num;
+
+    // 현제 설정한 (num == 월) 날짜
+    let _date = new Date(2021, num, 0);
+    // 현제 설정한 달의 날짜 갯수
+    let max = new Date(_date.getFullYear(), _date.getMonth() + 1, 0).getDate();
+    // 현제 설정한 전달의 날짜 갯수
+    let backMax = new Date(_date.getFullYear(), _date.getMonth(), 0).getDate();
+
+    // 오늘 날짜
+    let toDay = new Date();
+
+    // 요일의 배열 현제 무슨 요일인지 받아오기 위해
+    let count = [1, 2, 3, 4, 5, 6, 7];
+
+    // 전달의 날짜
+    let day = count[new Date(_date.getFullYear(), _date.getMonth(), 0).getDay()];
+
+    // 마지막 날의 날짜
+    let lastday = count[new Date(_date.getFullYear(), _date.getMonth(), max).getDay()];
+
+    //타이틀 세팅
+    document.querySelector('.date').innerHTML = _date.getFullYear() + "년 " + (_date.getMonth() + 1) + "월";
+
+    // 날짜 배열의 인덱스
+    dateIndex = 0;
+
+    // 달력 초기화 및 설정한 달의 날짜 갯수 태그 생성
+    await dateInit(max + day + lastday);
+
+    // 날짜 갯수만큼 반복
+    for (let i = 1; i <= max; i++) {
+      // 현재 몇개의 날짜가 세팅 되었는지
+      let datecount;
+
+      //첫번쨰 날짜에 무슨요일인지 확인한 후 빈곳에 전달의 마지막 날짜 세팅
+      if (i == 1) {
+        if (day != 7)
+          for (let e = 0; e < day; e++) {
+            date += '[' + ((backMax - day) + (e + 1)) + '] ';
+            // 전달 마지막 날짜 세팅
+            newDate[dateIndex].innerHTML = '[' + ((backMax - day) + (e + 1)) + '] ';
+            dateIndex++;
+          }
+        date += i;
+        // 전달 날짜 세팅후 첫 날짜 세팅
+        newDate[dateIndex].innerHTML = i;
+        dateIndex++;
+      }
+      else {
+        //오늘 날짜일때 날짜 세팅
+        if (toDay.getDate() == i && (toDay.getMonth() + 1) == num) {
+          date += " {" + i + "}";
+          newDate[dateIndex].innerHTML = " {" + i + "}";
+          dateIndex++;
+        }
+        //오늘 날짜 이후 날짜 세팅
+        else {
+          date += " " + i;
+          newDate[dateIndex].innerHTML = i;
+          dateIndex++;
+        }
+      }
+
+      //마지막 날짜이후 남은 공간 다음달 날짜 세팅
+      if (i == (max)) {
+        if (lastday != 0)
+          for (let n = 0; n < (7 - lastday); n++) {
+            date += ' [' + (n + 1) + ']';
+            newDate[dateIndex].innerHTML = ' [' + (n + 1) + ']';
+            dateIndex++;
+          }
+      }
+    }
+  };
+
+  // 달력 초기화 및 태그 생성
+  function dateInit(num) {
+    //달력 태그 비워줌
+    document.querySelector('.day-content').innerHTML = null;
+
+    let _item;
+    //7개의 단위로 떨어지지 않을때 예외 추가
+    if (!(num % 7 == 0)) {
+      num += (7 - (num % 7));
+    }
+
+    //현재 달의 갯수 만큼 반복
+    for (let i = 0; i < num; i++) {
+      //태그 생성
+      _item = document.createElement('div');
+      _item.append(document.createElement('p'));
+      _item.className = 'item'
+      document.querySelector('.day-content').append(_item);
+    }
+
+    //생성한 태그 배열로 바인딩
+    newDate = document.querySelectorAll('.item p');
+  }
+</script>
+
+</html>

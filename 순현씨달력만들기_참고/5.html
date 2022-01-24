@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h3 id=title></h3>
+  <p id="date"></p>
+</body>
+<script>
+  /* 5) 4단계에서 빈칸을 2개 출력했던것을, 2개 출력하지 말고, 이 달의 1일의 요일을 구해서 그 요일만큼의 빈칸을 출력하세요.
+ [][][]1 2 3 4 5 6 7
+ … 30*/
+
+  //이 달의 1일의 요일을 구해서 그 요일만큼의 빈칸을 출력하기
+  let _date = new Date();
+  let max = new Date(_date.getFullYear(), _date.getMonth() + 1, 0).getDate();
+  let count = [1, 2, 3, 4, 5, 6, 7];
+  let day = count[new Date(_date.getFullYear(), _date.getMonth(), 0).getDay()];
+  title.innerHTML = _date.getFullYear() + " 년 " + (_date.getMonth() + 1) + " 월 입니다."
+  for (let i = 1; i <= max; i++) {
+    let datecount;
+    if (i == 1) {
+      for (let e = 0; e < day; e++) {
+        date.innerHTML += '[] ';
+      }
+      date.innerHTML += + i;
+    }
+    else {
+      date.innerHTML += " " + i;
+    }
+    datecount = date.innerHTML.split(' ').length;
+    if (datecount < 7) {
+      if (i % (7 - day) == 0)
+        date.innerHTML += "<br/>";
+    }
+    else {
+      datecount = date.innerHTML.split(' ').length;
+      if (datecount % 7 == 0)
+        date.innerHTML += "<br/>";
+    }
+  }
+</script>
+
+</html>

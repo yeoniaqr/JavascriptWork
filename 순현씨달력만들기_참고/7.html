@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h3 id=title></h3>
+  <p id="date"></p>
+  <button onclick="datebtn(1)">+</button>
+  <button onclick="datebtn(-1)">-</button>
+</body>
+<script>
+  /* 7) 달력의 빈칸 출력을, 전달의 날짜와, 다음달 날짜로 바꾸고, 오늘 날짜를 {} 표기해주세요
+  1 2 3 4 {5} 6 7
+  … 30*/
+
+  //오늘 날짜를 {} 표기해 출력하기
+  let num = 10;
+  datebtn(0);
+  function datebtn(_num) {
+    date.innerHTML = "";
+    num += _num;
+    let _date = new Date(2021, num, 0);
+    let max = new Date(_date.getFullYear(), _date.getMonth() + 1, 0).getDate();
+    let backMax = new Date(_date.getFullYear(), _date.getMonth(), 0).getDate();
+    let toDay = new Date();
+    console.log(toDay.getDate());
+    let count = [1, 2, 3, 4, 5, 6, 7];
+    let day = count[new Date(_date.getFullYear(), _date.getMonth(), 0).getDay()];
+    let lastday = count[new Date(_date.getFullYear(), _date.getMonth(), max).getDay()];
+    title.innerHTML = _date.getFullYear() + " 년 " + (_date.getMonth() + 1) + " 월 입니다."
+    console.log(_date);
+    console.log(max);
+    for (let i = 1; i <= max; i++) {
+      let datecount;
+      if (i == 1) {
+        if (day != 7)
+          for (let e = 0; e < day; e++) {
+            date.innerHTML += '[' + ((backMax - day) + (e + 1)) + '] ';
+          }
+        date.innerHTML += + i;
+      }
+      else {
+        if (toDay.getDate() == i && (toDay.getMonth() + 1) == num) {
+          date.innerHTML += " {" + i + "}";
+        }
+        else
+          date.innerHTML += " " + i;
+      }
+      datecount = date.innerHTML.split(' ').length;
+      if (datecount < 7) {
+        if (i % (7 - day) == 0)
+          date.innerHTML += "<br/>";
+      }
+      else {
+        datecount = date.innerHTML.split(' ').length;
+        if (datecount % 7 == 0)
+          date.innerHTML += "<br/>";
+      }
+      if (i == (max)) {
+        if (lastday != 0)
+          for (let n = 0; n < (7 - lastday); n++) {
+            date.innerHTML += ' [' + (n + 1) + ']';
+          }
+      }
+    }
+  };
+</script>
+
+</html>
